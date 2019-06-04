@@ -33,7 +33,7 @@ find_package(Threads REQUIRED)
 add_subdirectory("modules")
 
 # Link libraries
-list(APPEND LINKLIBS Threads::Threads)
+list(APPEND LINKLIBS cppcommon)
 
 # System directories
 include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/modules")
@@ -45,7 +45,7 @@ file(GLOB_RECURSE LIB_SOURCE_FILES "source/*.cpp")
 set_source_files_properties(${LIB_SOURCE_FILES} PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}")
 add_library(cppsecurity ${LIB_HEADER_FILES} ${LIB_INLINE_FILES} ${LIB_SOURCE_FILES})
 target_include_directories(cppsecurity PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(cppsecurity ${LINKLIBS})
+target_link_libraries(cppsecurity ${LINKLIBS} Argon2 libscrypt)
 set_target_properties(cppsecurity PROPERTIES FOLDER libraries)
 list(APPEND INSTALL_TARGETS cppsecurity)
 list(APPEND LINKLIBS cppsecurity)

@@ -11,6 +11,8 @@
 
 #include "password_hashing.h"
 
+#include <stdint.h>
+
 namespace CppSecurity {
 
 //! 'scrypt' password hashing algorithm

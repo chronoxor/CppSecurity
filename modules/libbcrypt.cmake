@@ -13,7 +13,11 @@ if(NOT TARGET libbcrypt)
     set_source_files_properties(${SOURCE_FILES} PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS} /wd4005 /wd4013 /wd4047 /wd4067 /wd4101 /wd4244 /wd4267")
   endif()
   add_library(libbcrypt ${SOURCE_FILES})
-  target_include_directories(libbcrypt PUBLIC "libbcrypt/include")
+  if(MSVC)
+    target_include_directories(libbcrypt PUBLIC "libbcrypt/include")
+  elseif()
+    target_include_directories(libbcrypt PUBLIC "libbcrypt/include/bcrypt")
+  endif()
 
   # Module folder
   set_target_properties(libbcrypt PROPERTIES FOLDER modules/libbcrypt)

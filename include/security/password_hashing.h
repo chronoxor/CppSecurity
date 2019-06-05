@@ -11,7 +11,7 @@
 
 #include <string>
 
-namespace CppCommon {
+namespace CppSecurity {
 
 //! Password hashing interface
 /*!
@@ -53,12 +53,6 @@ public:
         \return Strong password hash and unique salt
     */
     virtual std::pair<std::string, std::string> Generate(std::string_view password) const = 0;
-    //! Generate the secure Base64 digest string for the given user password
-    /*!
-        \param password - User password
-        \return Secure Base64 digest string
-    */
-    std::string GenerateDigest(std::string_view password) const;
 
     //! Validate the user password over the given strong password hash and unique salt
     /*!
@@ -68,6 +62,14 @@ public:
         \return 'true' if the given user password is valid, 'false' if the given user password is invalid
     */
     virtual bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const = 0;
+
+    //! Generate the secure Base64 digest string for the given user password
+    /*!
+        \param password - User password
+        \return Secure Base64 digest string
+    */
+    std::string GenerateDigest(std::string_view password) const;
+
     //! Validate the user password over the given secure Base64 digest string
     /*!
         \param password - User password
@@ -81,6 +83,6 @@ private:
     size_t _salt_length;
 };
 
-} // namespace CppCommon
+} // namespace CppSecurity
 
 #endif // CPPSECURITY_PASSWORD_HASHING_H

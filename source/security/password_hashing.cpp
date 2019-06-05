@@ -13,7 +13,7 @@
 
 #include <cassert>
 
-namespace CppCommon {
+namespace CppSecurity {
 
 PasswordHashing::PasswordHashing(size_t hash_length, size_t salt_length)
     : _hash_length(hash_length), _salt_length(salt_length)
@@ -21,9 +21,9 @@ PasswordHashing::PasswordHashing(size_t hash_length, size_t salt_length)
     assert((hash_length >= 8) && "Hash length should be at least 8 bytes!");
     assert((salt_length >= 8) && "Salt length should be at least 8 bytes!");
     if (hash_length < 8)
-        throwex SecurityException("Invalid hash length!");
+        throwex CppCommon::SecurityException("Invalid hash length!");
     if (salt_length < 8)
-        throwex SecurityException("Invalid salt length!");
+        throwex CppCommon::SecurityException("Invalid salt length!");
 }
 
 std::string PasswordHashing::GenerateDigest(std::string_view password) const
@@ -38,7 +38,7 @@ std::string PasswordHashing::GenerateDigest(std::string_view password) const
 bool PasswordHashing::ValidateDigest(std::string_view password, std::string_view digest) const
 {
     // Decode the given digest from Base64 encoding
-    auto decoded = CppCommon::Encoding::Base64Decode(password);
+    auto decoded = CppCommon::Encoding::Base64Decode(digest);
 
     // Check the decoded digest size (must be hash + salt)
     if (decoded.size() != (hash_length() + salt_length()))
@@ -52,4 +52,4 @@ bool PasswordHashing::ValidateDigest(std::string_view password, std::string_view
     return Validate(password, hash, salt);
 }
 
-} // namespace CppCommon
+} // namespace CppSecurity

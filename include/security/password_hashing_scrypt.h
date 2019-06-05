@@ -11,7 +11,7 @@
 
 #include "password_hashing.h"
 
-namespace CppCommon {
+namespace CppSecurity {
 
 //! 'scrypt' password hashing algorithm
 /*!
@@ -75,6 +75,6 @@ private:
     uint32_t _p;
 };
 
-} // namespace CppCommon
+} // namespace CppSecurity
 
 #endif // CPPSECURITY_PASSWORD_HASHING_SCRYPT_H

@@ -17,17 +17,18 @@
 
 namespace CppCommon {
 
-std::pair<std::string, std::string> ScryptPasswordHashing::Generate(std::string_view password, size_t hash_length, size_t salt_length) const
-{
-    assert((hash_length >= 8) && "Hash length should be at least 8 bytes!");
-    assert((salt_length >= 8) && "Salt length should be at least 8 bytes!");
-    if (hash_length < 8)
-        throwex SecurityException("Invalid hash length!");
-    if (salt_length < 8)
-        throwex SecurityException("Invalid salt length!");
+std::string ScryptPasswordHashing::_name = "scrypt";
 
+ScryptPasswordHashing::ScryptPasswordHashing(size_t hash_length, size_t salt_length, uint64_t N, uint32_t r, uint32_t p)
+    : PasswordHashing(hash_length, salt_length),
+      _N(N), _r(r), _p(p)
+{
+}
+
+std::pair<std::string, std::string> ScryptPasswordHashing::Generate(std::string_view password) const
+{
     // Generate the unique password salt
-    std::string salt(salt_length, 0);
+    std::string salt(salt_length(), 0);
 #ifndef _MSC_VER
     if (libscrypt_salt_gen(salt.data(), salt.size()) != 0)
         throwex SecurityException("Cannot generate 'scrypt' salt!");
@@ -38,8 +39,8 @@ std::pair<std::string, std::string> ScryptPasswordHashing::Generate(std::string_
 #endif
 
     // Generate the strong password hash
-    std::string hash(hash_length, 0);
-    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), 1024, 8, 1, (uint8_t*)hash.data(), hash.size()) != 0)
+    std::string hash(hash_length(), 0);
+    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), N(), r(), p(), (uint8_t*)hash.data(), hash.size()) != 0)
         throwex SecurityException("Cannot generate 'scrypt' hash!");
 
     // Return successfully generated hash and salt pair
@@ -50,7 +51,7 @@ bool ScryptPasswordHashing::Validate(std::string_view password, std::string_view
 {
     // Calculate the digest for the given password and salt
     std::string digest(hash.size(), 0);
-    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), 1024, 8, 1, (uint8_t*)digest.data(), digest.size()) != 0)
+    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), N(), r(), p(), (uint8_t*)digest.data(), digest.size()) != 0)
         throwex SecurityException("Cannot calculate 'scrypt' hash!");
 
     // Compare the digest with the given hash

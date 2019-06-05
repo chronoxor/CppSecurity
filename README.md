@@ -202,38 +202,38 @@ CPU physical cores: 4
 CPU clock speed: 3.998 GHz
 CPU Hyper-Threading: enabled
 RAM total: 31.962 GiB
-RAM free: 18.608 GiB
+RAM free: 18.143 GiB
 ===============================================================================
 OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
 OS bits: 64-bit
 Process bits: 64-bit
 Process configuaraion: release
-Local timestamp: Thu Jun  6 01:54:35 2019
-UTC timestamp: Wed Jun  5 22:54:35 2019
+Local timestamp: Thu Jun  6 02:06:41 2019
+UTC timestamp: Wed Jun  5 23:06:41 2019
 ===============================================================================
 Benchmark: 'scrypt' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'scrypt' generate
-Average time: 1.989 ms/op
-Minimal time: 1.989 ms/op
-Maximal time: 2.067 ms/op
-Total time: 4.854 s
-Total operations: 2440
-Operations throughput: 502 ops/s
+Average time: 929.820 mcs/op
+Minimal time: 929.820 mcs/op
+Maximal time: 950.750 mcs/op
+Total time: 4.929 s
+Total operations: 5302
+Operations throughput: 1075 ops/s
 ===============================================================================
 Benchmark: 'scrypt' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'scrypt' validate
-Average time: 1.867 ms/op
-Minimal time: 1.867 ms/op
-Maximal time: 1.914 ms/op
-Total time: 4.947 s
-Total operations: 2649
-Operations throughput: 535 ops/s
+Average time: 846.707 mcs/op
+Minimal time: 846.707 mcs/op
+Maximal time: 882.812 mcs/op
+Total time: 4.926 s
+Total operations: 5819
+Operations throughput: 1181 ops/s
 ===============================================================================
 ```
 

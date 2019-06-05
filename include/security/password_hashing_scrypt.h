@@ -30,11 +30,11 @@ public:
     /*!
         \param hash_length - Strong password hash length (default is 32)
         \param salt_length - Unique password salt length (default is 32)
-        \param n - CPU AND RAM cost (default is 1024)
+        \param n - CPU AND RAM cost (default is 512)
         \param r - RAM Cost (default is 8)
         \param p - Degree of parallelism (default is 1)
     */
-    ScryptPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint64_t n = 1024, uint32_t r = 8, uint32_t p = 1);
+    ScryptPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint64_t n = 512, uint32_t r = 8, uint32_t p = 1);
     ScryptPasswordHashing(const ScryptPasswordHashing&) = default;
     ScryptPasswordHashing(ScryptPasswordHashing&&) = default;
     ~ScryptPasswordHashing() = default;

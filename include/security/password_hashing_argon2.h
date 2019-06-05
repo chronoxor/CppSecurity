@@ -37,10 +37,10 @@ public:
         \param hash_length - Strong password hash length (default is 32)
         \param salt_length - Unique password salt length (default is 32)
         \param t - Number of iterations (default is 3)
-        \param m - Memory usage in kibibytes (default is 12)
+        \param m - Memory usage in kibibytes (default is 4096)
         \param p - Degree of parallelism (default is 1)
     */
-    Argon2dPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint32_t t = 3, uint32_t m = 12, uint32_t p = 1);
+    Argon2dPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint32_t t = 4096, uint32_t m = 12, uint32_t p = 1);
     Argon2dPasswordHashing(const Argon2dPasswordHashing&) = default;
     Argon2dPasswordHashing(Argon2dPasswordHashing&&) = default;
     ~Argon2dPasswordHashing() = default;

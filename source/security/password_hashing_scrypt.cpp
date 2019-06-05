@@ -25,16 +25,6 @@ ScryptPasswordHashing::ScryptPasswordHashing(size_t hash_length, size_t salt_len
 {
 }
 
-#if defined(unix) || defined(__unix) || defined(__unix__)
-std::string ScryptPasswordHashing::GenerateSalt() const
-{
-    std::string salt(salt_length(), 0);
-    if (libscrypt_salt_gen((uint8_t*)salt.data(), salt.size()) != 0)
-        throwex CppCommon::SecurityException("Cannot generate 'scrypt' salt!");
-    return salt;
-}
-#endif
-
 std::pair<std::string, std::string> ScryptPasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
     // Generate the unique password salt

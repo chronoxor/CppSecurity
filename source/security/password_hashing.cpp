@@ -9,8 +9,8 @@
 #include "security/password_hashing.h"
 
 #include "errors/exceptions.h"
+#include "memory/memory.h"
 #include "string/encoding.h"
-#include "utility/countof.h"
 
 #include <cassert>
 
@@ -30,9 +30,7 @@ PasswordHashing::PasswordHashing(size_t hash_length, size_t salt_length)
 std::string PasswordHashing::GenerateSalt() const
 {
     std::string salt(salt_length(), 0);
-    const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (size_t i = 0; i < salt.size(); ++i)
-        salt[i] = chars[rand() % CppCommon::countof(chars)];
+    CppCommon::Memory::CryptoFill(salt.data(), salt.size());
     return salt;
 }
 

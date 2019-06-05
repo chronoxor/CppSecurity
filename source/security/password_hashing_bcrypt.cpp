@@ -25,14 +25,6 @@ BcryptPasswordHashing::BcryptPasswordHashing(size_t workfactor)
 {
 }
 
-std::string BcryptPasswordHashing::GenerateSalt() const
-{
-    std::string salt(salt_length(), 0);
-    if (bcrypt_gensalt((int)workfactor(), salt.data()) != 0)
-        throwex CppCommon::SecurityException("Cannot generate 'bcrypt' salt!");
-    return salt;
-}
-
 std::pair<std::string, std::string> BcryptPasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
     // Generate the unique password salt

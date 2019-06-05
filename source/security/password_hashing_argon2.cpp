@@ -9,9 +9,6 @@
 #include "security/password_hashing_argon2.h"
 
 #include "errors/exceptions.h"
-#include "utility/countof.h"
-
-#include <cassert>
 
 #include <argon2.h>
 
@@ -27,13 +24,10 @@ Argon2dPasswordHashing::Argon2dPasswordHashing(size_t hash_length, size_t salt_l
 {
 }
 
-std::pair<std::string, std::string> Argon2dPasswordHashing::Generate(std::string_view password) const
+std::pair<std::string, std::string> Argon2dPasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
     // Generate the unique password salt
-    std::string salt(salt_length(), 0);
-    const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (size_t i = 0; i < salt.size(); ++i)
-        salt[i] = chars[i % CppCommon::countof(chars)];
+    std::string salt = GenerateSalt();
 
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
@@ -55,13 +49,10 @@ bool Argon2dPasswordHashing::Validate(std::string_view password, std::string_vie
     return (digest == hash);
 }
 
-std::pair<std::string, std::string> Argon2iPasswordHashing::Generate(std::string_view password) const
+std::pair<std::string, std::string> Argon2iPasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
     // Generate the unique password salt
-    std::string salt(salt_length(), 0);
-    const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (size_t i = 0; i < salt.size(); ++i)
-        salt[i] = chars[i % CppCommon::countof(chars)];
+    std::string salt = GenerateSalt();
 
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
@@ -83,13 +74,10 @@ bool Argon2iPasswordHashing::Validate(std::string_view password, std::string_vie
     return (digest == hash);
 }
 
-std::pair<std::string, std::string> Argon2idPasswordHashing::Generate(std::string_view password) const
+std::pair<std::string, std::string> Argon2idPasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
     // Generate the unique password salt
-    std::string salt(salt_length(), 0);
-    const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for (size_t i = 0; i < salt.size(); ++i)
-        salt[i] = chars[i % CppCommon::countof(chars)];
+    std::string salt = GenerateSalt();
 
     // Generate the strong password hash
     std::string hash(hash_length(), 0);

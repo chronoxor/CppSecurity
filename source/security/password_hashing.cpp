@@ -10,6 +10,7 @@
 
 #include "errors/exceptions.h"
 #include "string/encoding.h"
+#include "utility/countof.h"
 
 #include <cassert>
 
@@ -26,16 +27,25 @@ PasswordHashing::PasswordHashing(size_t hash_length, size_t salt_length)
         throwex CppCommon::SecurityException("Invalid salt length!");
 }
 
+std::string PasswordHashing::GenerateSalt() const
+{
+    std::string salt(salt_length(), 0);
+    const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (size_t i = 0; i < salt.size(); ++i)
+        salt[i] = chars[rand() % CppCommon::countof(chars)];
+    return salt;
+}
+
 std::string PasswordHashing::GenerateDigest(std::string_view password) const
 {
     // Generate the digest
-    auto digest = Generate(password);
+    auto digest = GenerateHashAndSalt(password);
 
     // Encode the digest into Base64 encoding
     return CppCommon::Encoding::Base64Encode(digest.first + digest.second);
 }
 
-bool PasswordHashing::ValidateDigest(std::string_view password, std::string_view digest) const
+bool PasswordHashing::Validate(std::string_view password, std::string_view digest) const
 {
     // Decode the given digest from Base64 encoding
     auto decoded = CppCommon::Encoding::Base64Decode(digest);

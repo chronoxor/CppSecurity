@@ -19,8 +19,8 @@ int main(int argc, char** argv)
     std::cout << "Generate 'passw0rd' digest: " << digest << std::endl;
 
     // Validate digest
-    std::cout << "Validate 'password' digest: " << (scrypt.ValidateDigest("password", digest) ? "valid" : "invalid") << std::endl;
-    std::cout << "Validate 'passw0rd' digest: " << (scrypt.ValidateDigest("passw0rd", digest) ? "valid" : "invalid") << std::endl;
+    std::cout << "Validate 'password' digest: " << (scrypt.Validate("password", digest) ? "valid" : "invalid") << std::endl;
+    std::cout << "Validate 'passw0rd' digest: " << (scrypt.Validate("passw0rd", digest) ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

@@ -51,8 +51,12 @@ public:
 
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-    std::pair<std::string, std::string> Generate(std::string_view password) const override;
+#if defined(unix) || defined(__unix) || defined(__unix__)
+    std::string GenerateSalt() const override;
+#endif
+    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
+    using PasswordHashing::Validate;
 
 private:
     static std::string _name;

@@ -17,6 +17,6 @@ TEST_CASE("'scrypt' password hashing", "[CppSecurity]")
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.ValidateDigest("password", digest));
-    REQUIRE(scrypt.ValidateDigest("passw0rd", digest));
+    REQUIRE(!scrypt.Validate("password", digest));
+    REQUIRE(scrypt.Validate("passw0rd", digest));
 }

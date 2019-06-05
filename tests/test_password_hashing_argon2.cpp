@@ -17,8 +17,8 @@ TEST_CASE("'Argon2d' password hashing", "[CppSecurity]")
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.ValidateDigest("password", digest));
-    REQUIRE(scrypt.ValidateDigest("passw0rd", digest));
+    REQUIRE(!scrypt.Validate("password", digest));
+    REQUIRE(scrypt.Validate("passw0rd", digest));
 }
 
 TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
@@ -30,8 +30,8 @@ TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.ValidateDigest("password", digest));
-    REQUIRE(scrypt.ValidateDigest("passw0rd", digest));
+    REQUIRE(!scrypt.Validate("password", digest));
+    REQUIRE(scrypt.Validate("passw0rd", digest));
 }
 
 TEST_CASE("'Argon2id' password hashing", "[CppSecurity]")
@@ -43,6 +43,6 @@ TEST_CASE("'Argon2id' password hashing", "[CppSecurity]")
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.ValidateDigest("password", digest));
-    REQUIRE(scrypt.ValidateDigest("passw0rd", digest));
+    REQUIRE(!scrypt.Validate("password", digest));
+    REQUIRE(scrypt.Validate("passw0rd", digest));
 }

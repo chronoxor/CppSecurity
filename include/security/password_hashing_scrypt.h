@@ -34,7 +34,7 @@ public:
         \param salt_length - Unique password salt length (default is 32)
         \param N - CPU AND RAM cost (default is 1024)
         \param r - RAM Cost (default is 8)
-        \param p - CPU cost (parallelisation) (default is 1)
+        \param p - Degree of parallelism (default is 1)
     */
     ScryptPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint64_t N = 1024, uint32_t r = 8, uint32_t p = 1);
     ScryptPasswordHashing(const ScryptPasswordHashing&) = default;
@@ -48,26 +48,12 @@ public:
     uint64_t N() const noexcept { return _N; }
     //! Get the RAM Cost
     uint32_t r() const noexcept { return _r; }
-    //! Get the CPU cost (parallelisation)
+    //! Get the degree of parallelism
     uint32_t p() const noexcept { return _p; }
 
-    //! Get the password hashing algorithm name
+    // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-
-    //! Generate the strong password hash and unique salt for the given user password
-    /*!
-        \param password - User password
-        \return Strong password hash and unique salt
-    */
     std::pair<std::string, std::string> Generate(std::string_view password) const override;
-
-    //! Validate the user password over the given strong password hash and unique salt
-    /*!
-        \param password - User password
-        \param hash - Strong password hash
-        \param salt - Unique password salt
-        \return 'true' if the given user password is valid, 'false' if the given user password is invalid
-    */
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
 
 private:

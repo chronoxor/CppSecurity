@@ -6,15 +6,17 @@
 
 #include "security/password_hashing_scrypt.h"
 
+using namespace CppSecurity;
+
 BENCHMARK("'scrypt' generate")
 {
-    static CppSecurity::ScryptPasswordHashing scrypt;
+    static ScryptPasswordHashing scrypt;
     std::string digest = scrypt.GenerateDigest("passw0rd");
 }
 
 BENCHMARK("'scrypt' validate")
 {
-    static CppSecurity::ScryptPasswordHashing scrypt;
+    static ScryptPasswordHashing scrypt;
     static std::string digest = scrypt.GenerateDigest("passw0rd");
     scrypt.ValidateDigest("passw0rd", digest);
 }

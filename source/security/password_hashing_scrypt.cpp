@@ -30,7 +30,7 @@ std::pair<std::string, std::string> ScryptPasswordHashing::Generate(std::string_
     // Generate the unique password salt
     std::string salt(salt_length(), 0);
 #ifndef _MSC_VER
-    if (libscrypt_salt_gen(salt.data(), salt.size()) != 0)
+    if (libscrypt_salt_gen((uint8_t*)salt.data(), salt.size()) != 0)
         throwex CppCommon::SecurityException("Cannot generate 'scrypt' salt!");
 #else
     const char chars[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

@@ -50,7 +50,7 @@ public:
     uint32_t p() const noexcept { return _p; }
 
     //! Get the password hashing algorithm name
-    const std::string& name() const { return _name; }
+    const std::string& name() const override { return _name; }
 
     //! Generate the strong password hash and unique salt for the given user password
     /*!

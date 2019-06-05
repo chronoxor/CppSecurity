@@ -11,8 +11,6 @@
 
 #include "password_hashing.h"
 
-#include <stdint.h>
-
 namespace CppSecurity {
 
 //! 'Argon2d' password hashing algorithm

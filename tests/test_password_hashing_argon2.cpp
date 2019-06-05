@@ -10,7 +10,7 @@ using namespace CppSecurity;
 
 TEST_CASE("'Argon2d' password hashing", "[CppSecurity]")
 {
-    CppSecurity::Argon2dPasswordHashing scrypt;
+    Argon2dPasswordHashing scrypt;
 
     // Generate digest
     std::string digest = scrypt.GenerateDigest("passw0rd");
@@ -23,7 +23,7 @@ TEST_CASE("'Argon2d' password hashing", "[CppSecurity]")
 
 TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
 {
-    CppSecurity::Argon2iPasswordHashing scrypt;
+    Argon2iPasswordHashing scrypt;
 
     // Generate digest
     std::string digest = scrypt.GenerateDigest("passw0rd");
@@ -36,7 +36,7 @@ TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
 
 TEST_CASE("'Argon2id' password hashing", "[CppSecurity]")
 {
-    CppSecurity::Argon2idPasswordHashing scrypt;
+    Argon2idPasswordHashing scrypt;
 
     // Generate digest
     std::string digest = scrypt.GenerateDigest("passw0rd");

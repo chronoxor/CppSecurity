@@ -125,6 +125,8 @@ private:
     static std::string _name;
 };
 
+/*! \example password_hashing_argon2.cpp 'Argon2' password hashing example */
+
 } // namespace CppSecurity
 
 #endif // CPPSECURITY_PASSWORD_HASHING_ARGON2_H

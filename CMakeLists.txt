@@ -27,12 +27,28 @@ include(SetPlatformFeatures)
 include(SystemInformation)
 
 # External packages
-find_package(Threads REQUIRED)
+set(OPENSSL_USE_STATIC_LIBS TRUE)
+if(MINGW)
+  set(OPENSSL_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/modules/OpenSSL/MinGW")
+elseif(MSVC)
+  set(OPENSSL_ROOT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/modules/OpenSSL/VS")
+  set(OPENSSL_MSVC_STATIC_RT TRUE)
+endif()
+find_package(OpenSSL REQUIRED)
+if(WIN32)
+  find_package(Crypt)
+  find_package(WinSock)
+endif()
 
 # Modules
 add_subdirectory("modules")
 
 # Link libraries
+list(APPEND LINKLIBS ${OPENSSL_LIBRARIES})
+if(WIN32)
+  list(APPEND LINKLIBS ${CRYPT_LIBRARIES})
+  list(APPEND LINKLIBS ${WINSOCK_LIBRARIES})
+endif()
 list(APPEND LINKLIBS cppcommon)
 
 # System directories
@@ -45,7 +61,7 @@ file(GLOB_RECURSE LIB_SOURCE_FILES "source/*.cpp")
 set_source_files_properties(${LIB_SOURCE_FILES} PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}")
 add_library(cppsecurity ${LIB_HEADER_FILES} ${LIB_INLINE_FILES} ${LIB_SOURCE_FILES})
 target_include_directories(cppsecurity PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(cppsecurity ${LINKLIBS} Argon2 libbcrypt libscrypt)
+target_link_libraries(cppsecurity ${LINKLIBS} Argon2 fastpbkdf2 libbcrypt libscrypt)
 set_target_properties(cppsecurity PROPERTIES FOLDER libraries)
 list(APPEND INSTALL_TARGETS cppsecurity)
 list(APPEND LINKLIBS cppsecurity)

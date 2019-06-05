@@ -62,6 +62,8 @@ private:
     uint32_t _p;
 };
 
+/*! \example password_hashing_scrypt.cpp 'scrypt' password hashing example */
+
 } // namespace CppSecurity
 
 #endif // CPPSECURITY_PASSWORD_HASHING_SCRYPT_H

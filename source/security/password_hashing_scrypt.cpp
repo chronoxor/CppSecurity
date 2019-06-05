@@ -9,9 +9,6 @@
 #include "security/password_hashing_scrypt.h"
 
 #include "errors/exceptions.h"
-#include "utility/countof.h"
-
-#include <cassert>
 
 #include <libscrypt.h>
 

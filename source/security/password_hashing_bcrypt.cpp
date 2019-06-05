@@ -9,9 +9,6 @@
 #include "security/password_hashing_bcrypt.h"
 
 #include "errors/exceptions.h"
-#include "utility/countof.h"
-
-#include <cassert>
 
 #include <libbcrypt.h>
 
@@ -23,6 +20,14 @@ BcryptPasswordHashing::BcryptPasswordHashing(size_t workfactor)
     : PasswordHashing(64, 64),
       _workfactor(workfactor)
 {
+}
+
+std::string BcryptPasswordHashing::GenerateSalt() const
+{
+    std::string salt(salt_length(), 0);
+    if (bcrypt_gensalt((int)workfactor(), salt.data()) != 0)
+        throwex CppCommon::SecurityException("Cannot generate 'bcrypt' salt!");
+    return salt;
 }
 
 std::pair<std::string, std::string> BcryptPasswordHashing::GenerateHashAndSalt(std::string_view password) const

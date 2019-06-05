@@ -10,7 +10,7 @@ using namespace CppSecurity;
 
 TEST_CASE("'bcrypt' password hashing", "[CppSecurity]")
 {
-    CppSecurity::BcryptPasswordHashing bcrypt;
+    BcryptPasswordHashing bcrypt;
 
     // Generate digest
     std::string digest = bcrypt.GenerateDigest("passw0rd");

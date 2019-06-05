@@ -19,9 +19,9 @@ namespace CppSecurity {
 
 std::string ScryptPasswordHashing::_name = "scrypt";
 
-ScryptPasswordHashing::ScryptPasswordHashing(size_t hash_length, size_t salt_length, uint64_t N, uint32_t r, uint32_t p)
+ScryptPasswordHashing::ScryptPasswordHashing(size_t hash_length, size_t salt_length, uint64_t n, uint32_t r, uint32_t p)
     : PasswordHashing(hash_length, salt_length),
-      _N(N), _r(r), _p(p)
+      _n(n), _r(r), _p(p)
 {
 }
 
@@ -40,7 +40,7 @@ std::pair<std::string, std::string> ScryptPasswordHashing::Generate(std::string_
 
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
-    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), N(), r(), p(), (uint8_t*)hash.data(), hash.size()) != 0)
+    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), n(), r(), p(), (uint8_t*)hash.data(), hash.size()) != 0)
         throwex CppCommon::SecurityException("Cannot generate 'scrypt' hash!");
 
     // Return successfully generated hash and salt pair
@@ -51,7 +51,7 @@ bool ScryptPasswordHashing::Validate(std::string_view password, std::string_view
 {
     // Calculate the digest for the given password and salt
     std::string digest(hash.size(), 0);
-    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), N(), r(), p(), (uint8_t*)digest.data(), digest.size()) != 0)
+    if (libscrypt_scrypt((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), n(), r(), p(), (uint8_t*)digest.data(), digest.size()) != 0)
         throwex CppCommon::SecurityException("Cannot calculate 'scrypt' hash!");
 
     // Compare the digest with the given hash

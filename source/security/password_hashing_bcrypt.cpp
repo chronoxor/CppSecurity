@@ -13,7 +13,7 @@
 
 #include <cassert>
 
-#include <bcrypt/bcrypt.h>
+#include <libbcrypt.h>
 
 namespace CppSecurity {
 

@@ -8,13 +8,13 @@
 
 using namespace CppSecurity;
 
-BENCHMARK("'bcrypt' generate")
+BENCHMARK("'PBKDF2' generate")
 {
     static PBKDF2PasswordHashing pbkdf2;
     std::string digest = pbkdf2.GenerateDigest("passw0rd");
 }
 
-BENCHMARK("'bcrypt' validate")
+BENCHMARK("'PBKDF2' validate")
 {
     static PBKDF2PasswordHashing pbkdf2;
     static std::string digest = pbkdf2.GenerateDigest("passw0rd");

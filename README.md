@@ -14,6 +14,11 @@ C++ Security Library contains initial templates for a new C++ library project.
   * [Features](#features)
   * [Requirements](#requirements)
   * [How to build?](#how-to-build)
+  * [Security benchmarks](#security-benchmarks)
+    * [Benchmark 1: 'PBKDF2' password hashing algorithm](#benchmark-1-PBKDF2-password-hashing-algorithm)
+    * [Benchmark 2: 'bcrypt' password hashing algorithm](#benchmark-2-bcrypt-password-hashing-algorithm)
+    * [Benchmark 3: 'scrypt' password hashing algorithm](#benchmark-3-scrypt-password-hashing-algorithm)
+    * [Benchmark 4: 'Argon2' password hashing algorithm](#benchmark-4-argon2-password-hashing-algorithm)
 
 # Features
 * Cross platform (Linux, OSX, Windows)
@@ -81,4 +86,250 @@ mingw.bat
 ```shell
 cd build
 vs.bat
+```
+
+# Security benchmarks
+
+## Benchmark 1: 'PBKDF2' password hashing algorithm
+Benchmark source file: [password_hashing_pbkdf2.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_pbkdf2.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 18.634 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Thu Jun  6 01:41:13 2019
+UTC timestamp: Wed Jun  5 22:41:13 2019
+===============================================================================
+Benchmark: 'PBKDF2' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'PBKDF2' generate
+Average time: 40.037 ms/op
+Minimal time: 40.037 ms/op
+Maximal time: 47.907 ms/op
+Total time: 4.404 s
+Total operations: 110
+Operations throughput: 24 ops/s
+===============================================================================
+Benchmark: 'PBKDF2' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'PBKDF2' validate
+Average time: 39.656 ms/op
+Minimal time: 39.656 ms/op
+Maximal time: 44.473 ms/op
+Total time: 4.481 s
+Total operations: 113
+Operations throughput: 25 ops/s
+===============================================================================
+```
+
+## Benchmark 2: 'bcrypt' password hashing algorithm
+Benchmark source file: [password_hashing_bcrypt.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_bcrypt.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 18.631 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Thu Jun  6 01:50:08 2019
+UTC timestamp: Wed Jun  5 22:50:08 2019
+===============================================================================
+Benchmark: 'bcrypt' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'bcrypt' generate
+Average time: 184.043 ms/op
+Minimal time: 184.043 ms/op
+Maximal time: 185.843 ms/op
+Total time: 4.785 s
+Total operations: 26
+Operations throughput: 5 ops/s
+===============================================================================
+Benchmark: 'bcrypt' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'bcrypt' validate
+Average time: 185.383 ms/op
+Minimal time: 185.383 ms/op
+Maximal time: 230.264 ms/op
+Total time: 3.893 s
+Total operations: 21
+Operations throughput: 5 ops/s
+===============================================================================
+```
+
+## Benchmark 3: 'scrypt' password hashing algorithm
+Benchmark source file: [password_hashing_scrypt.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_scrypt.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 18.608 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Thu Jun  6 01:54:35 2019
+UTC timestamp: Wed Jun  5 22:54:35 2019
+===============================================================================
+Benchmark: 'scrypt' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'scrypt' generate
+Average time: 1.989 ms/op
+Minimal time: 1.989 ms/op
+Maximal time: 2.067 ms/op
+Total time: 4.854 s
+Total operations: 2440
+Operations throughput: 502 ops/s
+===============================================================================
+Benchmark: 'scrypt' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'scrypt' validate
+Average time: 1.867 ms/op
+Minimal time: 1.867 ms/op
+Maximal time: 1.914 ms/op
+Total time: 4.947 s
+Total operations: 2649
+Operations throughput: 535 ops/s
+===============================================================================
+```
+
+## Benchmark 4: 'Argon2' password hashing algorithm
+Benchmark source file: [password_hashing_argon2.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_argon2.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 18.088 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Thu Jun  6 01:58:59 2019
+UTC timestamp: Wed Jun  5 22:58:59 2019
+===============================================================================
+Benchmark: 'Argon2d' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2d' generate
+Average time: 21.976 ms/op
+Minimal time: 21.976 ms/op
+Maximal time: 24.577 ms/op
+Total time: 4.725 s
+Total operations: 215
+Operations throughput: 45 ops/s
+===============================================================================
+Benchmark: 'Argon2d' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2d' validate
+Average time: 24.346 ms/op
+Minimal time: 24.346 ms/op
+Maximal time: 26.231 ms/op
+Total time: 4.796 s
+Total operations: 197
+Operations throughput: 41 ops/s
+===============================================================================
+Benchmark: 'Argon2i' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2i' generate
+Average time: 35.866 ms/op
+Minimal time: 35.866 ms/op
+Maximal time: 37.678 ms/op
+Total time: 4.806 s
+Total operations: 134
+Operations throughput: 27 ops/s
+===============================================================================
+Benchmark: 'Argon2i' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2i' validate
+Average time: 36.342 ms/op
+Minimal time: 36.342 ms/op
+Maximal time: 39.705 ms/op
+Total time: 4.724 s
+Total operations: 130
+Operations throughput: 27 ops/s
+===============================================================================
+Benchmark: 'Argon2id' generate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2id' generate
+Average time: 22.421 ms/op
+Minimal time: 22.421 ms/op
+Maximal time: 23.605 ms/op
+Total time: 4.820 s
+Total operations: 215
+Operations throughput: 44 ops/s
+===============================================================================
+Benchmark: 'Argon2id' validate
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: 'Argon2id' validate
+Average time: 21.772 ms/op
+Minimal time: 21.772 ms/op
+Maximal time: 23.773 ms/op
+Total time: 4.768 s
+Total operations: 219
+Operations throughput: 45 ops/s
+===============================================================================
 ```

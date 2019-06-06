@@ -104,38 +104,38 @@ CPU physical cores: 4
 CPU clock speed: 3.998 GHz
 CPU Hyper-Threading: enabled
 RAM total: 31.962 GiB
-RAM free: 18.634 GiB
+RAM free: 17.1017 GiB
 ===============================================================================
 OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
 OS bits: 64-bit
 Process bits: 64-bit
 Process configuaraion: release
-Local timestamp: Thu Jun  6 01:41:13 2019
-UTC timestamp: Wed Jun  5 22:41:13 2019
+Local timestamp: Thu Jun  6 02:52:55 2019
+UTC timestamp: Wed Jun  5 23:52:55 2019
 ===============================================================================
 Benchmark: 'PBKDF2' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'PBKDF2' generate
-Average time: 40.037 ms/op
-Minimal time: 40.037 ms/op
-Maximal time: 47.907 ms/op
-Total time: 4.404 s
-Total operations: 110
-Operations throughput: 24 ops/s
+Average time: 491.718 mcs/op
+Minimal time: 491.718 mcs/op
+Maximal time: 507.445 mcs/op
+Total time: 4.933 s
+Total operations: 10034
+Operations throughput: 2033 ops/s
 ===============================================================================
 Benchmark: 'PBKDF2' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'PBKDF2' validate
-Average time: 39.656 ms/op
-Minimal time: 39.656 ms/op
-Maximal time: 44.473 ms/op
-Total time: 4.481 s
-Total operations: 113
-Operations throughput: 25 ops/s
+Average time: 403.262 mcs/op
+Minimal time: 403.262 mcs/op
+Maximal time: 412.173 mcs/op
+Total time: 4.976 s
+Total operations: 12341
+Operations throughput: 2479 ops/s
 ===============================================================================
 ```
 
@@ -153,38 +153,38 @@ CPU physical cores: 4
 CPU clock speed: 3.998 GHz
 CPU Hyper-Threading: enabled
 RAM total: 31.962 GiB
-RAM free: 18.631 GiB
+RAM free: 17.921 GiB
 ===============================================================================
 OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
 OS bits: 64-bit
 Process bits: 64-bit
 Process configuaraion: release
-Local timestamp: Thu Jun  6 01:50:08 2019
-UTC timestamp: Wed Jun  5 22:50:08 2019
+Local timestamp: Thu Jun  6 02:59:34 2019
+UTC timestamp: Wed Jun  5 23:59:34 2019
 ===============================================================================
 Benchmark: 'bcrypt' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'bcrypt' generate
-Average time: 184.043 ms/op
-Minimal time: 184.043 ms/op
-Maximal time: 185.843 ms/op
-Total time: 4.785 s
-Total operations: 26
-Operations throughput: 5 ops/s
+Average time: 950.807 mcs/op
+Minimal time: 950.807 mcs/op
+Maximal time: 960.204 mcs/op
+Total time: 4.986 s
+Total operations: 5245
+Operations throughput: 1051 ops/s
 ===============================================================================
 Benchmark: 'bcrypt' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'bcrypt' validate
-Average time: 185.383 ms/op
-Minimal time: 185.383 ms/op
-Maximal time: 230.264 ms/op
-Total time: 3.893 s
-Total operations: 21
-Operations throughput: 5 ops/s
+Average time: 862.694 mcs/op
+Minimal time: 862.694 mcs/op
+Maximal time: 867.637 mcs/op
+Total time: 4.988 s
+Total operations: 5783
+Operations throughput: 1159 ops/s
 ===============================================================================
 ```
 
@@ -202,38 +202,38 @@ CPU physical cores: 4
 CPU clock speed: 3.998 GHz
 CPU Hyper-Threading: enabled
 RAM total: 31.962 GiB
-RAM free: 18.143 GiB
+RAM free: 18.052 GiB
 ===============================================================================
 OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
 OS bits: 64-bit
 Process bits: 64-bit
 Process configuaraion: release
-Local timestamp: Thu Jun  6 02:06:41 2019
-UTC timestamp: Wed Jun  5 23:06:41 2019
+Local timestamp: Thu Jun  6 02:42:32 2019
+UTC timestamp: Wed Jun  5 23:42:32 2019
 ===============================================================================
 Benchmark: 'scrypt' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'scrypt' generate
-Average time: 929.820 mcs/op
-Minimal time: 929.820 mcs/op
-Maximal time: 950.750 mcs/op
-Total time: 4.929 s
-Total operations: 5302
-Operations throughput: 1075 ops/s
+Average time: 956.991 mcs/op
+Minimal time: 956.991 mcs/op
+Maximal time: 982.195 mcs/op
+Total time: 4.983 s
+Total operations: 5207
+Operations throughput: 1044 ops/s
 ===============================================================================
 Benchmark: 'scrypt' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'scrypt' validate
-Average time: 846.707 mcs/op
-Minimal time: 846.707 mcs/op
-Maximal time: 882.812 mcs/op
-Total time: 4.926 s
-Total operations: 5819
-Operations throughput: 1181 ops/s
+Average time: 857.232 mcs/op
+Minimal time: 857.232 mcs/op
+Maximal time: 916.809 mcs/op
+Total time: 4.781 s
+Total operations: 5578
+Operations throughput: 1166 ops/s
 ===============================================================================
 ```
 
@@ -251,85 +251,85 @@ CPU physical cores: 4
 CPU clock speed: 3.998 GHz
 CPU Hyper-Threading: enabled
 RAM total: 31.962 GiB
-RAM free: 18.088 GiB
+RAM free: 18.026 GiB
 ===============================================================================
 OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
 OS bits: 64-bit
 Process bits: 64-bit
 Process configuaraion: release
-Local timestamp: Thu Jun  6 01:58:59 2019
-UTC timestamp: Wed Jun  5 22:58:59 2019
+Local timestamp: Thu Jun  6 02:45:53 2019
+UTC timestamp: Wed Jun  5 23:45:53 2019
 ===============================================================================
 Benchmark: 'Argon2d' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2d' generate
-Average time: 21.976 ms/op
-Minimal time: 21.976 ms/op
-Maximal time: 24.577 ms/op
-Total time: 4.725 s
-Total operations: 215
-Operations throughput: 45 ops/s
+Average time: 824.018 mcs/op
+Minimal time: 824.018 mcs/op
+Maximal time: 844.418 mcs/op
+Total time: 4.932 s
+Total operations: 5986
+Operations throughput: 1213 ops/s
 ===============================================================================
 Benchmark: 'Argon2d' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2d' validate
-Average time: 24.346 ms/op
-Minimal time: 24.346 ms/op
-Maximal time: 26.231 ms/op
-Total time: 4.796 s
-Total operations: 197
-Operations throughput: 41 ops/s
+Average time: 744.765 mcs/op
+Minimal time: 744.765 mcs/op
+Maximal time: 791.891 mcs/op
+Total time: 4.778 s
+Total operations: 6416
+Operations throughput: 1342 ops/s
 ===============================================================================
 Benchmark: 'Argon2i' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2i' generate
-Average time: 35.866 ms/op
-Minimal time: 35.866 ms/op
-Maximal time: 37.678 ms/op
-Total time: 4.806 s
-Total operations: 134
-Operations throughput: 27 ops/s
+Average time: 851.280 mcs/op
+Minimal time: 851.280 mcs/op
+Maximal time: 921.955 mcs/op
+Total time: 4.768 s
+Total operations: 5601
+Operations throughput: 1174 ops/s
 ===============================================================================
 Benchmark: 'Argon2i' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2i' validate
-Average time: 36.342 ms/op
-Minimal time: 36.342 ms/op
-Maximal time: 39.705 ms/op
-Total time: 4.724 s
-Total operations: 130
-Operations throughput: 27 ops/s
+Average time: 747.924 mcs/op
+Minimal time: 747.924 mcs/op
+Maximal time: 764.430 mcs/op
+Total time: 4.961 s
+Total operations: 6634
+Operations throughput: 1337 ops/s
 ===============================================================================
 Benchmark: 'Argon2id' generate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2id' generate
-Average time: 22.421 ms/op
-Minimal time: 22.421 ms/op
-Maximal time: 23.605 ms/op
-Total time: 4.820 s
-Total operations: 215
-Operations throughput: 44 ops/s
+Average time: 828.117 mcs/op
+Minimal time: 828.117 mcs/op
+Maximal time: 858.997 mcs/op
+Total time: 4.935 s
+Total operations: 5960
+Operations throughput: 1207 ops/s
 ===============================================================================
 Benchmark: 'Argon2id' validate
 Attempts: 5
 Duration: 5 seconds
 -------------------------------------------------------------------------------
 Phase: 'Argon2id' validate
-Average time: 21.772 ms/op
-Minimal time: 21.772 ms/op
-Maximal time: 23.773 ms/op
-Total time: 4.768 s
-Total operations: 219
-Operations throughput: 45 ops/s
+Average time: 738.366 mcs/op
+Minimal time: 738.366 mcs/op
+Maximal time: 791.300 mcs/op
+Total time: 4.698 s
+Total operations: 6363
+Operations throughput: 1354 ops/s
 ===============================================================================
 ```

@@ -13,10 +13,10 @@ TEST_CASE("'scrypt' password hashing", "[CppSecurity]")
     ScryptPasswordHashing scrypt;
 
     // Generate digest
-    std::string digest = scrypt.GenerateDigest("passw0rd");
+    std::string digest = scrypt.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.Validate("password", digest));
-    REQUIRE(scrypt.Validate("passw0rd", digest));
+    REQUIRE(!scrypt.ValidateEncodedDigest("password", digest));
+    REQUIRE(scrypt.ValidateEncodedDigest("passw0rd", digest));
 }

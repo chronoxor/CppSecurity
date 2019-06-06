@@ -18,7 +18,7 @@ BENCHMARK("'scrypt' validate")
 {
     static ScryptPasswordHashing scrypt;
     static std::string digest = scrypt.GenerateDigest("passw0rd");
-    scrypt.Validate("passw0rd", digest);
+    scrypt.ValidateDigest("passw0rd", digest);
 }
 
 BENCHMARK_MAIN()

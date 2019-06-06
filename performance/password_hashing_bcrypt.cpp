@@ -18,7 +18,7 @@ BENCHMARK("'bcrypt' validate")
 {
     static BcryptPasswordHashing bcrypt;
     static std::string digest = bcrypt.GenerateDigest("passw0rd");
-    bcrypt.Validate("passw0rd", digest);
+    bcrypt.ValidateDigest("passw0rd", digest);
 }
 
 BENCHMARK_MAIN()

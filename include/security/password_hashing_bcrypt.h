@@ -33,9 +33,9 @@ class BcryptPasswordHashing : public PasswordHashing
 public:
     //! Initialize 'bcrypt' password hashing with required parameters
     /*!
-        \param workfactor - Work factor (default is 12)
+        \param workfactor - Work factor (default is 4)
     */
-    BcryptPasswordHashing(size_t workfactor = 12);
+    BcryptPasswordHashing(size_t workfactor = 4);
     BcryptPasswordHashing(const BcryptPasswordHashing&) = default;
     BcryptPasswordHashing(BcryptPasswordHashing&&) = default;
     ~BcryptPasswordHashing() = default;
@@ -49,9 +49,10 @@ public:
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
     std::string GenerateSalt() const override;
-    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
+    std::string GenerateHash(std::string_view password, std::string_view salt) const override;
+    std::string GenerateDigest(std::string_view password) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
-    using PasswordHashing::Validate;
+    bool ValidateDigest(std::string_view password, std::string_view digest) const override;
 
 private:
     static std::string _name;

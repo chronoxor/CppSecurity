@@ -18,7 +18,7 @@ BENCHMARK("'PBKDF2' validate")
 {
     static PBKDF2PasswordHashing pbkdf2;
     static std::string digest = pbkdf2.GenerateDigest("passw0rd");
-    pbkdf2.Validate("passw0rd", digest);
+    pbkdf2.ValidateDigest("passw0rd", digest);
 }
 
 BENCHMARK_MAIN()

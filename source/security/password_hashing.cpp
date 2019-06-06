@@ -34,30 +34,43 @@ std::string PasswordHashing::GenerateSalt() const
     return salt;
 }
 
-std::string PasswordHashing::GenerateDigest(std::string_view password) const
+std::pair<std::string, std::string> PasswordHashing::GenerateHashAndSalt(std::string_view password) const
 {
-    // Generate the digest
-    auto digest = GenerateHashAndSalt(password);
-
-    // Encode the digest into Base64 encoding
-    return CppCommon::Encoding::Base64Encode(digest.first + digest.second);
+    std::string salt = GenerateSalt();
+    std::string hash = GenerateHash(password, salt);
+    return std::make_pair(hash, salt);
 }
 
-bool PasswordHashing::Validate(std::string_view password, std::string_view digest) const
+std::string PasswordHashing::GenerateDigest(std::string_view password) const
 {
-    // Decode the given digest from Base64 encoding
-    auto decoded = CppCommon::Encoding::Base64Decode(digest);
+    auto digest = GenerateHashAndSalt(password);
+    return digest.first + digest.second;
+}
 
-    // Check the decoded digest size (must be hash + salt)
-    if (decoded.size() != (hash_length() + salt_length()))
+std::string PasswordHashing::GenerateEncodedDigest(std::string_view password) const
+{
+    // Encode the digest into the Base64 encoding
+    return CppCommon::Encoding::Base64Encode(GenerateDigest(password));
+}
+
+bool PasswordHashing::ValidateDigest(std::string_view password, std::string_view digest) const
+{
+    // Check the digest size (must be hash + salt)
+    if (digest.size() != (hash_length() + salt_length()))
         return false;
 
-    // Extract hash and salt from the decoded digest
-    std::string_view hash(decoded.data(), hash_length());
-    std::string_view salt(decoded.data() + hash_length(), salt_length());
+    // Extract hash and salt from the digest
+    std::string_view hash(digest.data(), hash_length());
+    std::string_view salt(digest.data() + hash_length(), salt_length());
 
     // Perform the password validation
     return Validate(password, hash, salt);
+}
+
+bool PasswordHashing::ValidateEncodedDigest(std::string_view password, std::string_view digest) const
+{
+    // Decode the digest from the Base64 encoding
+    return ValidateDigest(password, CppCommon::Encoding::Base64Decode(digest));
 }
 
 } // namespace CppSecurity

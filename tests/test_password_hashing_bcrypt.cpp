@@ -13,10 +13,10 @@ TEST_CASE("'bcrypt' password hashing", "[CppSecurity]")
     BcryptPasswordHashing bcrypt;
 
     // Generate digest
-    std::string digest = bcrypt.GenerateDigest("passw0rd");
+    std::string digest = bcrypt.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!bcrypt.Validate("password", digest));
-    REQUIRE(bcrypt.Validate("passw0rd", digest));
+    REQUIRE(!bcrypt.ValidateEncodedDigest("password", digest));
+    REQUIRE(bcrypt.ValidateEncodedDigest("passw0rd", digest));
 }

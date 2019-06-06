@@ -42,10 +42,10 @@ public:
     /*!
         \param hash_length - Strong password hash length (default is 32)
         \param salt_length - Unique password salt length (default is 32)
-        \param iterations - Count of 'PBKDF2' iterations (default is 100000)
+        \param iterations - Count of 'PBKDF2' iterations (default is 1000)
         \param algorithm - 'PBKDF2' algorithm (default is PBKDF2::HMAC_SHA512)
     */
-    PBKDF2PasswordHashing(size_t hash_length = 32, size_t salt_length = 32, size_t iterations = 100000, PBKDF2 algorithm = PBKDF2::HMAC_SHA512);
+    PBKDF2PasswordHashing(size_t hash_length = 32, size_t salt_length = 32, size_t iterations = 1000, PBKDF2 algorithm = PBKDF2::HMAC_SHA512);
     PBKDF2PasswordHashing(const PBKDF2PasswordHashing&) = default;
     PBKDF2PasswordHashing(PBKDF2PasswordHashing&&) = default;
     ~PBKDF2PasswordHashing() = default;
@@ -60,9 +60,8 @@ public:
 
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
+    std::string GenerateHash(std::string_view password, std::string_view salt) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
-    using PasswordHashing::Validate;
 
 private:
     static std::string _name;

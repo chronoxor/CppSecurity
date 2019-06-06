@@ -30,18 +30,19 @@ std::string BcryptPasswordHashing::GenerateSalt() const
     return salt;
 }
 
-std::pair<std::string, std::string> BcryptPasswordHashing::GenerateHashAndSalt(std::string_view password) const
+std::string BcryptPasswordHashing::GenerateHash(std::string_view password, std::string_view salt) const
 {
-    // Generate the unique password salt
-    std::string salt = GenerateSalt();
-
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
     if (bcrypt_hashpw(password.data(), salt.data(), hash.data()) != 0)
         throwex CppCommon::SecurityException("Cannot generate 'bcrypt' hash!");
+    return hash;
+}
 
-    // Return successfully generated hash and salt pair
-    return std::make_pair(hash, salt);
+std::string BcryptPasswordHashing::GenerateDigest(std::string_view password) const
+{
+    std::string salt = GenerateSalt();
+    return GenerateHash(password, salt);
 }
 
 bool BcryptPasswordHashing::Validate(std::string_view password, std::string_view hash, std::string_view salt) const
@@ -53,6 +54,16 @@ bool BcryptPasswordHashing::Validate(std::string_view password, std::string_view
 
     // Compare the digest with the given hash
     return (digest == hash);
+}
+
+bool BcryptPasswordHashing::ValidateDigest(std::string_view password, std::string_view digest) const
+{
+    // Check the digest size (must be hash + salt)
+    if (digest.size() != hash_length())
+        return false;
+
+    // Perform the password validation
+    return (bcrypt_checkpw(password.data(), digest.data()) == 0);
 }
 
 } // namespace CppSecurity

@@ -35,10 +35,10 @@ public:
         \param hash_length - Strong password hash length (default is 32)
         \param salt_length - Unique password salt length (default is 32)
         \param t - Number of iterations (default is 3)
-        \param m - Memory usage in kibibytes (default is 4096)
+        \param m - Memory usage in kibibytes (default is 512)
         \param p - Degree of parallelism (default is 1)
     */
-    Argon2dPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint32_t t = 4096, uint32_t m = 12, uint32_t p = 1);
+    Argon2dPasswordHashing(size_t hash_length = 32, size_t salt_length = 32, uint32_t t = 3, uint32_t m = 512, uint32_t p = 1);
     Argon2dPasswordHashing(const Argon2dPasswordHashing&) = default;
     Argon2dPasswordHashing(Argon2dPasswordHashing&&) = default;
     ~Argon2dPasswordHashing() = default;
@@ -55,9 +55,8 @@ public:
 
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
+    std::string GenerateHash(std::string_view password, std::string_view salt) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
-    using PasswordHashing::Validate;
 
 private:
     static std::string _name;
@@ -87,9 +86,8 @@ public:
 
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
+    std::string GenerateHash(std::string_view password, std::string_view salt) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
-    using Argon2dPasswordHashing::Validate;
 
 private:
     static std::string _name;
@@ -117,9 +115,8 @@ public:
 
     // Implementation of PasswordHashing
     const std::string& name() const override { return _name; }
-    std::pair<std::string, std::string> GenerateHashAndSalt(std::string_view password) const override;
+    std::string GenerateHash(std::string_view password, std::string_view salt) const override;
     bool Validate(std::string_view password, std::string_view hash, std::string_view salt) const override;
-    using Argon2dPasswordHashing::Validate;
 
 private:
     static std::string _name;

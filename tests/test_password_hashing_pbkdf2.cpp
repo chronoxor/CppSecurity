@@ -13,10 +13,10 @@ TEST_CASE("'PBKDF2' password hashing", "[CppSecurity]")
     PBKDF2PasswordHashing pbkdf2;
 
     // Generate digest
-    std::string digest = pbkdf2.GenerateDigest("passw0rd");
+    std::string digest = pbkdf2.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!pbkdf2.Validate("password", digest));
-    REQUIRE(pbkdf2.Validate("passw0rd", digest));
+    REQUIRE(!pbkdf2.ValidateEncodedDigest("password", digest));
+    REQUIRE(pbkdf2.ValidateEncodedDigest("passw0rd", digest));
 }

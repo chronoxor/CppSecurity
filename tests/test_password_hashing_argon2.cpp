@@ -13,12 +13,12 @@ TEST_CASE("'Argon2d' password hashing", "[CppSecurity]")
     Argon2dPasswordHashing scrypt;
 
     // Generate digest
-    std::string digest = scrypt.GenerateDigest("passw0rd");
+    std::string digest = scrypt.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.Validate("password", digest));
-    REQUIRE(scrypt.Validate("passw0rd", digest));
+    REQUIRE(!scrypt.ValidateEncodedDigest("password", digest));
+    REQUIRE(scrypt.ValidateEncodedDigest("passw0rd", digest));
 }
 
 TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
@@ -26,12 +26,12 @@ TEST_CASE("'Argon2i' password hashing", "[CppSecurity]")
     Argon2iPasswordHashing scrypt;
 
     // Generate digest
-    std::string digest = scrypt.GenerateDigest("passw0rd");
+    std::string digest = scrypt.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.Validate("password", digest));
-    REQUIRE(scrypt.Validate("passw0rd", digest));
+    REQUIRE(!scrypt.ValidateEncodedDigest("password", digest));
+    REQUIRE(scrypt.ValidateEncodedDigest("passw0rd", digest));
 }
 
 TEST_CASE("'Argon2id' password hashing", "[CppSecurity]")
@@ -39,10 +39,10 @@ TEST_CASE("'Argon2id' password hashing", "[CppSecurity]")
     Argon2idPasswordHashing scrypt;
 
     // Generate digest
-    std::string digest = scrypt.GenerateDigest("passw0rd");
+    std::string digest = scrypt.GenerateEncodedDigest("passw0rd");
     REQUIRE(digest.size() > 0);
 
     // Validate digest
-    REQUIRE(!scrypt.Validate("password", digest));
-    REQUIRE(scrypt.Validate("passw0rd", digest));
+    REQUIRE(!scrypt.ValidateEncodedDigest("password", digest));
+    REQUIRE(scrypt.ValidateEncodedDigest("passw0rd", digest));
 }

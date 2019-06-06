@@ -21,11 +21,8 @@ PBKDF2PasswordHashing::PBKDF2PasswordHashing(size_t hash_length, size_t salt_len
 {
 }
 
-std::pair<std::string, std::string> PBKDF2PasswordHashing::GenerateHashAndSalt(std::string_view password) const
+std::string PBKDF2PasswordHashing::GenerateHash(std::string_view password, std::string_view salt) const
 {
-    // Generate the unique password salt
-    std::string salt = GenerateSalt();
-
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
     switch (algorithm())
@@ -40,9 +37,7 @@ std::pair<std::string, std::string> PBKDF2PasswordHashing::GenerateHashAndSalt(s
             fastpbkdf2_hmac_sha512((const uint8_t*)password.data(), password.size(), (const uint8_t*)salt.data(), salt.size(), (uint32_t)iterations(), (uint8_t*)hash.data(), hash.size());
             break;
     }
-
-    // Return successfully generated hash and salt pair
-    return std::make_pair(hash, salt);
+    return hash;
 }
 
 bool PBKDF2PasswordHashing::Validate(std::string_view password, std::string_view hash, std::string_view salt) const

@@ -24,18 +24,13 @@ Argon2dPasswordHashing::Argon2dPasswordHashing(size_t hash_length, size_t salt_l
 {
 }
 
-std::pair<std::string, std::string> Argon2dPasswordHashing::GenerateHashAndSalt(std::string_view password) const
+std::string Argon2dPasswordHashing::GenerateHash(std::string_view password, std::string_view salt) const
 {
-    // Generate the unique password salt
-    std::string salt = GenerateSalt();
-
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
     if (argon2d_hash_raw(t(), m(), p(), password.data(), password.size(), salt.data(), salt.size(), hash.data(), hash.size()) != ARGON2_OK)
         throwex CppCommon::SecurityException("Cannot generate 'Argon2d' hash!");
-
-    // Return successfully generated hash and salt pair
-    return std::make_pair(hash, salt);
+    return hash;
 }
 
 bool Argon2dPasswordHashing::Validate(std::string_view password, std::string_view hash, std::string_view salt) const
@@ -49,18 +44,13 @@ bool Argon2dPasswordHashing::Validate(std::string_view password, std::string_vie
     return (digest == hash);
 }
 
-std::pair<std::string, std::string> Argon2iPasswordHashing::GenerateHashAndSalt(std::string_view password) const
+std::string Argon2iPasswordHashing::GenerateHash(std::string_view password, std::string_view salt) const
 {
-    // Generate the unique password salt
-    std::string salt = GenerateSalt();
-
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
     if (argon2i_hash_raw(t(), m(), p(), password.data(), password.size(), salt.data(), salt.size(), hash.data(), hash.size()) != ARGON2_OK)
         throwex CppCommon::SecurityException("Cannot generate 'Argon2i' hash!");
-
-    // Return successfully generated hash and salt pair
-    return std::make_pair(hash, salt);
+    return hash;
 }
 
 bool Argon2iPasswordHashing::Validate(std::string_view password, std::string_view hash, std::string_view salt) const
@@ -74,18 +64,13 @@ bool Argon2iPasswordHashing::Validate(std::string_view password, std::string_vie
     return (digest == hash);
 }
 
-std::pair<std::string, std::string> Argon2idPasswordHashing::GenerateHashAndSalt(std::string_view password) const
+std::string Argon2idPasswordHashing::GenerateHash(std::string_view password, std::string_view salt) const
 {
-    // Generate the unique password salt
-    std::string salt = GenerateSalt();
-
     // Generate the strong password hash
     std::string hash(hash_length(), 0);
     if (argon2id_hash_raw(t(), m(), p(), password.data(), password.size(), salt.data(), salt.size(), hash.data(), hash.size()) != ARGON2_OK)
         throwex CppCommon::SecurityException("Cannot generate 'Argon2id' hash!");
-
-    // Return successfully generated hash and salt pair
-    return std::make_pair(hash, salt);
+    return hash;
 }
 
 bool Argon2idPasswordHashing::Validate(std::string_view password, std::string_view hash, std::string_view salt) const

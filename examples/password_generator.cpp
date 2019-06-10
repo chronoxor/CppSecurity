@@ -20,8 +20,8 @@ int main(int argc, char** argv)
     std::cout << "Generate '" << genertor.flags() << "' password: " << genertor.Generate() << std::endl;
 
     // Validate passwords
-    std::cout << "Validate 'PaSsw0rd' password: " << (genertor.Validate("PaSsw0rd") ? "valid" : "invalid") << std::endl;
-    std::cout << "Validate 'PaSsw[0]rd' password: " << (genertor.Validate("PaSsw[0]rd") ? "valid" : "invalid") << std::endl;
+    std::cout << "Validate 'SomeCoolPaSsw0rd' password: " << (genertor.Validate("SomeCoolPaSsw0rd") ? "valid" : "invalid") << std::endl;
+    std::cout << "Validate 'NotCoolPaSsw[0]rd' password: " << (genertor.Validate("NotCoolPaSsw[0]rd") ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

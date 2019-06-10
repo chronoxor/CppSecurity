@@ -78,13 +78,13 @@ bool PasswordGenerator::Validate(std::string_view password) const
     }
 
     // Validate password flags requirements
-    if (!lower && ((flags() & PasswordFlags::lower) != 0))
+    if (lower && ((flags() & PasswordFlags::lower) == 0))
         return false;
-    if (!upper && ((flags() & PasswordFlags::upper) != 0))
+    if (upper && ((flags() & PasswordFlags::upper) == 0))
         return false;
-    if (!digits && ((flags() & PasswordFlags::digits) != 0))
+    if (digits && ((flags() & PasswordFlags::digits) == 0))
         return false;
-    if (!symbols && ((flags() & PasswordFlags::symbols) != 0))
+    if (symbols && ((flags() & PasswordFlags::symbols) == 0))
         return false;
 
     return true;

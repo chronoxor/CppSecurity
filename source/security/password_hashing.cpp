@@ -20,9 +20,10 @@ PasswordHashing::PasswordHashing(size_t hash_length, size_t salt_length)
     : _hash_length(hash_length), _salt_length(salt_length)
 {
     assert((hash_length >= 8) && "Hash length should be at least 8 bytes!");
-    assert((salt_length >= 8) && "Salt length should be at least 8 bytes!");
     if (hash_length < 8)
         throwex CppCommon::SecurityException("Invalid hash length!");
+
+    assert((salt_length >= 8) && "Salt length should be at least 8 bytes!");
     if (salt_length < 8)
         throwex CppCommon::SecurityException("Invalid salt length!");
 }

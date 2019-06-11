@@ -85,9 +85,9 @@ size_t GoogleAuthenticator::Validate(std::string_view secret, const CppCommon::T
 #else
     HMAC_CTX ctx;
     HMAC_CTX_init(&ctx);
-    HMAC_Init_ex(ctx, key.data(), (int)key.size(), EVP_sha1(), nullptr);
-    HMAC_Update(ctx, challenge, CppCommon::countof(challenge));
-    HMAC_Final(ctx, hash, &size);
+    HMAC_Init_ex(&ctx, key.data(), (int)key.size(), EVP_sha1(), nullptr);
+    HMAC_Update(&ctx, challenge, CppCommon::countof(challenge));
+    HMAC_Final(&ctx, hash, &size);
     HMAC_CTX_cleanup(&ctx);
 #endif
 

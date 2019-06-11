@@ -15,18 +15,18 @@ C++ Security Library contains initial templates for a new C++ library project.
   * [Requirements](#requirements)
   * [How to build?](#how-to-build)
   * [Security benchmarks](#security-benchmarks)
-    * [Benchmark 1: 'PBKDF2' password hashing algorithm](#benchmark-1-PBKDF2-password-hashing-algorithm)
-    * [Benchmark 2: 'bcrypt' password hashing algorithm](#benchmark-2-bcrypt-password-hashing-algorithm)
-    * [Benchmark 3: 'scrypt' password hashing algorithm](#benchmark-3-scrypt-password-hashing-algorithm)
-    * [Benchmark 4: 'Argon2' password hashing algorithm](#benchmark-4-argon2-password-hashing-algorithm)
+    * [Benchmark 1: Password generator](#benchmark-1-password-generator)
+    * [Benchmark 2: Google Authenticator](#benchmark-2-google-authenticator)
+    * [Benchmark 3: 'PBKDF2' password hashing algorithm](#benchmark-3-PBKDF2-password-hashing-algorithm)
+    * [Benchmark 4: 'bcrypt' password hashing algorithm](#benchmark-4-bcrypt-password-hashing-algorithm)
+    * [Benchmark 5: 'scrypt' password hashing algorithm](#benchmark-5-scrypt-password-hashing-algorithm)
+    * [Benchmark 6: 'Argon2' password hashing algorithm](#benchmark-6-argon2-password-hashing-algorithm)
 
 # Features
 * Cross platform (Linux, OSX, Windows)
-* Benchmarks
-* Examples
-* Tests
-* [Doxygen](http://www.doxygen.org) API documentation
-* Continuous integration ([Travis CI](https://travis-ci.com), [AppVeyor](https://www.appveyor.com))
+* Password generator
+* [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) support
+* Password hashing algorithms ([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [scrypt](https://en.wikipedia.org/wiki/Scrypt), [Argon2](https://en.wikipedia.org/wiki/Argon2))
 
 # Requirements
 * Linux (binutils-dev uuid-dev)
@@ -90,7 +90,105 @@ vs.bat
 
 # Security benchmarks
 
-## Benchmark 1: 'PBKDF2' password hashing algorithm
+## Benchmark 1: Password generator
+Benchmark source file: [password_generator.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_generator.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 24.476 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Wed Jun 12 01:55:58 2019
+UTC timestamp: Tue Jun 11 22:55:58 2019
+===============================================================================
+Benchmark: Generate password
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Generate password
+Average time: 73.490 mcs/op
+Minimal time: 73.490 mcs/op
+Maximal time: 76.286 mcs/op
+Total time: 4.925 s
+Total operations: 67019
+Operations throughput: 13607 ops/s
+===============================================================================
+Benchmark: Validate password
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Validate password
+Average time: 19 ns/op
+Minimal time: 19 ns/op
+Maximal time: 20 ns/op
+Total time: 1.944 s
+Total operations: 97525818
+Operations throughput: 50161060 ops/s
+===============================================================================
+```
+
+## Benchmark 2: Google Authenticator
+Benchmark source file: [google_authenticator.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/google_authenticator.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.0.0
+===============================================================================
+CPU architecutre: Intel(R) Core(TM) i7-4790K CPU @ 4.00GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 3.998 GHz
+CPU Hyper-Threading: enabled
+RAM total: 31.962 GiB
+RAM free: 24.470 GiB
+===============================================================================
+OS version: Microsoft Windows 8 Enterprise Edition (build 9200), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuaraion: release
+Local timestamp: Wed Jun 12 01:57:37 2019
+UTC timestamp: Tue Jun 11 22:57:37 2019
+===============================================================================
+Benchmark: Generate Google Authenticator secret
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Generate Google Authenticator secret
+Average time: 75.167 mcs/op
+Minimal time: 75.167 mcs/op
+Maximal time: 77.377 mcs/op
+Total time: 4.882 s
+Total operations: 64960
+Operations throughput: 13303 ops/s
+===============================================================================
+Benchmark: Generate Google Authenticator token
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Generate Google Authenticator token
+Average time: 1.244 mcs/op
+Minimal time: 1.244 mcs/op
+Maximal time: 1.260 mcs/op
+Total time: 4.847 s
+Total operations: 3894253
+Operations throughput: 803368 ops/s
+===============================================================================
+```
+
+## Benchmark 3: 'PBKDF2' password hashing algorithm
 Benchmark source file: [password_hashing_pbkdf2.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_pbkdf2.cpp)
 
 Benchmark report is the following:
@@ -139,7 +237,7 @@ Operations throughput: 2479 ops/s
 ===============================================================================
 ```
 
-## Benchmark 2: 'bcrypt' password hashing algorithm
+## Benchmark 4: 'bcrypt' password hashing algorithm
 Benchmark source file: [password_hashing_bcrypt.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_bcrypt.cpp)
 
 Benchmark report is the following:
@@ -188,7 +286,7 @@ Operations throughput: 1159 ops/s
 ===============================================================================
 ```
 
-## Benchmark 3: 'scrypt' password hashing algorithm
+## Benchmark 5: 'scrypt' password hashing algorithm
 Benchmark source file: [password_hashing_scrypt.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_scrypt.cpp)
 
 Benchmark report is the following:
@@ -237,7 +335,7 @@ Operations throughput: 1166 ops/s
 ===============================================================================
 ```
 
-## Benchmark 4: 'Argon2' password hashing algorithm
+## Benchmark 6: 'Argon2' password hashing algorithm
 Benchmark source file: [password_hashing_argon2.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/password_hashing_argon2.cpp)
 
 Benchmark report is the following:

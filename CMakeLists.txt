@@ -48,11 +48,11 @@ endif()
 # Modules
 add_subdirectory("modules")
 
-message(${CMAKE_DL_LIBS})
-
 # Link libraries
-list(APPEND LINKLIBS ${CMAKE_DL_LIBS})
 list(APPEND LINKLIBS ${OPENSSL_LIBRARIES})
+if(UNIX)
+  list(APPEND LINKLIBS ${CMAKE_DL_LIBS})
+endif()
 if(WIN32)
   list(APPEND LINKLIBS ${CRYPT_LIBRARIES})
   list(APPEND LINKLIBS ${WINSOCK_LIBRARIES})

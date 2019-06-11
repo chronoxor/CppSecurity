@@ -40,9 +40,6 @@ elseif(MSVC)
   set(OPENSSL_MSVC_STATIC_RT TRUE)
 endif()
 find_package(OpenSSL REQUIRED)
-if(UNIX)
-  find_package(LibDL)
-endif()
 if(WIN32)
   find_package(Crypt)
   find_package(WinSock)
@@ -53,14 +50,15 @@ add_subdirectory("modules")
 
 # Link libraries
 list(APPEND LINKLIBS ${OPENSSL_LIBRARIES})
-if(UNIX)
-  list(APPEND LINKLIBS ${LIBDL_LIBRARIES})
-endif()
 if(WIN32)
   list(APPEND LINKLIBS ${CRYPT_LIBRARIES})
   list(APPEND LINKLIBS ${WINSOCK_LIBRARIES})
 endif()
 list(APPEND LINKLIBS cppcommon)
+
+message(${OPENSSL_CRYPTO_LIBRARY})
+message(${OPENSSL_SSL_LIBRARY})
+message(${OPENSSL_LIBRARIES})
 
 # System directories
 include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/modules")

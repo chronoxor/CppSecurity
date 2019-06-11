@@ -14,13 +14,16 @@ int main(int argc, char** argv)
 {
     CppSecurity::BcryptPasswordHashing bcrypt;
 
-    // Generate digest
-    std::string digest = bcrypt.GenerateEncodedDigest("passw0rd");
-    std::cout << "Generate 'passw0rd' digest: " << digest << std::endl;
+    // Show the password
+    std::password password = "passw0rd";
+    std::cout << "Password: " << password << std::endl;
 
-    // Validate digest
-    std::cout << "Validate 'password' digest: " << (bcrypt.ValidateEncodedDigest("password", digest) ? "valid" : "invalid") << std::endl;
-    std::cout << "Validate 'passw0rd' digest: " << (bcrypt.ValidateEncodedDigest("passw0rd", digest) ? "valid" : "invalid") << std::endl;
+    // Generate the digest
+    std::string digest = bcrypt.GenerateEncodedDigest(password);
+    std::cout << "Generated digest: " << digest << std::endl;
+
+    // Validate the digest
+    std::cout << "Validate digest: " << (bcrypt.ValidateEncodedDigest(password, digest) ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

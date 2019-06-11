@@ -18,7 +18,7 @@ namespace CppSecurity {
 PasswordGenerator::PasswordGenerator(size_t length, PasswordFlags flags)
     : _length(length), _flags(flags)
 {
-    assert((length >= 6) && "Password should be at least 6 symbols!");
+    assert((length >= 6) && "Password should be at least 6 bytes!");
     if (length < 6)
         throwex CppCommon::SecurityException("Invalid password length!");
 

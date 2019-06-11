@@ -9,7 +9,7 @@
 #ifndef CPPSECURITY_PASSWORD_HASHING_H
 #define CPPSECURITY_PASSWORD_HASHING_H
 
-#include <string>
+#include "password.h"
 
 namespace CppSecurity {
 

@@ -14,13 +14,16 @@ int main(int argc, char** argv)
 {
     CppSecurity::PBKDF2PasswordHashing pbkdf2;
 
-    // Generate digest
-    std::string digest = pbkdf2.GenerateEncodedDigest("passw0rd");
-    std::cout << "Generate 'passw0rd' digest: " << digest << std::endl;
+    // Show the password
+    std::password password = "passw0rd";
+    std::cout << "Password: " << password << std::endl;
 
-    // Validate digest
-    std::cout << "Validate 'password' digest: " << (pbkdf2.ValidateEncodedDigest("password", digest) ? "valid" : "invalid") << std::endl;
-    std::cout << "Validate 'passw0rd' digest: " << (pbkdf2.ValidateEncodedDigest("passw0rd", digest) ? "valid" : "invalid") << std::endl;
+    // Generate the digest
+    std::string digest = pbkdf2.GenerateEncodedDigest(password);
+    std::cout << "Generated digest: " << digest << std::endl;
+
+    // Validate the digest
+    std::cout << "Validate digest: " << (pbkdf2.ValidateEncodedDigest(password, digest) ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

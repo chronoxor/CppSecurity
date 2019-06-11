@@ -14,13 +14,16 @@ int main(int argc, char** argv)
 {
     CppSecurity::Argon2iPasswordHashing scrypt;
 
-    // Generate digest
-    std::string digest = scrypt.GenerateEncodedDigest("passw0rd");
-    std::cout << "Generate 'passw0rd' digest: " << digest << std::endl;
+    // Show the password
+    std::password password = "passw0rd";
+    std::cout << "Password: " << password << std::endl;
 
-    // Validate digest
-    std::cout << "Validate 'password' digest: " << (scrypt.ValidateEncodedDigest("password", digest) ? "valid" : "invalid") << std::endl;
-    std::cout << "Validate 'passw0rd' digest: " << (scrypt.ValidateEncodedDigest("passw0rd", digest) ? "valid" : "invalid") << std::endl;
+    // Generate the digest
+    std::string digest = scrypt.GenerateEncodedDigest(password);
+    std::cout << "Generated digest: " << digest << std::endl;
+
+    // Validate the digest
+    std::cout << "Validate digest: " << (scrypt.ValidateEncodedDigest(password, digest) ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

@@ -43,8 +43,8 @@ namespace CppSecurity {
 
 //! Password generator
 /*!
-    Passrord generator is used to create secure passwords for other security
-    components.
+    Password generator allows to generate and validate secure passwords for other
+    security components.
 
     Thread-safe.
 */

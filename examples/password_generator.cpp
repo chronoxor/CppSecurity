@@ -22,6 +22,7 @@ int main(int argc, char** argv)
     // Validate passwords
     std::cout << "Validate 'SomeCoolPaSsw0rd' password: " << (genertor.Validate("SomeCoolPaSsw0rd") ? "valid" : "invalid") << std::endl;
     std::cout << "Validate 'NotCoolPaSsw[0]rd' password: " << (genertor.Validate("NotCoolPaSsw[0]rd") ? "valid" : "invalid") << std::endl;
+    std::cout << "Validate 'NotCoolPaSsw[0]rd' password: " << (genertor.Validate("NotCoolPaSsw0rd") ? "valid" : "invalid") << std::endl;
 
     return 0;
 }

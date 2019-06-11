@@ -32,9 +32,10 @@ int main(int argc, char** argv)
     std::string line;
     while (getline(std::cin, line))
     {
-        size_t token = std::stoi(line);
-        if (token == 0)
+        if (line.empty() || (line == "0"))
             break;
+
+        size_t token = std::stoi(line);
 
         // Validate the token
         std::cout << (authenticator.Validate(token, secret) ? "Valid" : "Invalid") << std::endl;

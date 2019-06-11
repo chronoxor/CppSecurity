@@ -49,16 +49,12 @@ endif()
 add_subdirectory("modules")
 
 # Link libraries
-list(APPEND LINKLIBS ${OPENSSL_LIBRARIES})
+list(APPEND LINKLIBS ${OPENSSL_LIBRARIES} "dl")
 if(WIN32)
   list(APPEND LINKLIBS ${CRYPT_LIBRARIES})
   list(APPEND LINKLIBS ${WINSOCK_LIBRARIES})
 endif()
 list(APPEND LINKLIBS cppcommon)
-
-message(${OPENSSL_CRYPTO_LIBRARY})
-message(${OPENSSL_SSL_LIBRARY})
-message(${OPENSSL_LIBRARIES})
 
 # System directories
 include_directories(SYSTEM "${CMAKE_CURRENT_SOURCE_DIR}/modules")

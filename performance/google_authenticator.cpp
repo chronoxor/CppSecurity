@@ -14,11 +14,11 @@ BENCHMARK("Generate Google Authenticator secret")
     std::password secret = authenticator.GenerateSecret();
 }
 
-BENCHMARK("Validate Google Authenticator token")
+BENCHMARK("Generate Google Authenticator token")
 {
     static GoogleAuthenticator authenticator;
     static std::password secret = authenticator.GenerateSecret();
-    authenticator.Validate(secret);
+    authenticator.GenerateToken(secret);
 }
 
 BENCHMARK_MAIN()

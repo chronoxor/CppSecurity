@@ -22,6 +22,6 @@ TEST_CASE("Google Authenticator", "[CppSecurity]")
     REQUIRE(qr == "https://chart.apis.google.com/chart?cht=qr&chs=123x456&chl=otpauth%3A//totp/test%3Fsecret%3DOBQXG43XGBZGI%3D%3D%3D");
 
     // Validate secret over different UTC timestamps
-    REQUIRE(authenticator.Validate(secret, CppCommon::UtcTimestamp(0)) == 166471);
-    REQUIRE(authenticator.Validate(secret, CppCommon::UtcTimestamp(946684800000000000)) == 126720);
+    REQUIRE(authenticator.Validate(166471, secret, CppCommon::UtcTimestamp(0)));
+    REQUIRE(authenticator.Validate(126720, secret, CppCommon::UtcTimestamp(946684800000000000)));
 }

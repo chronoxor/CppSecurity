@@ -37,7 +37,7 @@ int main(int argc, char** argv)
             break;
 
         // Validate the token
-        std::cout << ((authenticator.Validate(secret) == token) ? "Valid" : "Invalid") << std::endl;
+        std::cout << (authenticator.Validate(token, secret) ? "Valid" : "Invalid") << std::endl;
     }
 
     return 0;

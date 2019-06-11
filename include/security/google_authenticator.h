@@ -77,15 +77,24 @@ public:
         \param height - QR Code height (default is 100)
         \return Generated Google Authenticator QR Code link
     */
-    std::password GenerateQRCodeLink(std::string_view url, size_t width = 256, size_t height = 256) const;
+    std::password GenerateQRCodeLink(std::string_view url, size_t width = 100, size_t height = 100) const;
 
-    //! Validate the Google Authenticator secret and get the corresponding token
+    //! Generate the Google Authenticator token for the given secret and UTC timestamp
     /*!
         \param secret - Google Authenticator secret
         \param timestamp - UTC timestamp (default is CppCommon::UtcTimestamp())
-        \return Validated Google Authenticator token
+        \return Generated Google Authenticator token
     */
-    size_t Validate(std::string_view secret, const CppCommon::Timestamp& timestamp = CppCommon::UtcTimestamp()) const;
+    size_t GenerateToken(std::string_view secret, const CppCommon::Timestamp& timestamp = CppCommon::UtcTimestamp()) const;
+
+    //! Validate the Google Authenticator token over the given secret and UTC timestamp
+    /*!
+        \param token - Google Authenticator token
+        \param secret - Google Authenticator secret
+        \param timestamp - UTC timestamp (default is CppCommon::UtcTimestamp())
+        \return 'true' if the given token is valid, 'false' if the given token is invalid
+    */
+    bool Validate(size_t token, std::string_view secret, const CppCommon::Timestamp& timestamp = CppCommon::UtcTimestamp()) const;
 
 private:
     size_t _secret_length;

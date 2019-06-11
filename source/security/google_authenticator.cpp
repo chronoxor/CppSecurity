@@ -60,7 +60,7 @@ std::password GoogleAuthenticator::GenerateQRCodeLink(std::string_view url, size
     return std::password("https://chart.apis.google.com/chart?cht=qr&chs={}x{}&chl={}"_format(width, height, url));
 }
 
-size_t GoogleAuthenticator::Validate(std::string_view secret, const CppCommon::Timestamp& timestamp) const
+size_t GoogleAuthenticator::GenerateToken(std::string_view secret, const CppCommon::Timestamp& timestamp) const
 {
     // Get the current timestamp in 30sec intervals
     uint64_t seconds = timestamp.seconds() / 30;
@@ -111,6 +111,11 @@ size_t GoogleAuthenticator::Validate(std::string_view secret, const CppCommon::T
     truncated &= 0x7FFFFFFF;
     truncated %= pin;
     return truncated;
+}
+
+bool GoogleAuthenticator::Validate(size_t token, std::string_view secret, const CppCommon::Timestamp& timestamp) const
+{
+    return (token == GenerateToken(secret, timestamp));
 }
 
 } // namespace CppSecurity

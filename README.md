@@ -29,8 +29,8 @@ C++ Security Library contains initial templates for a new C++ library project.
 * Password hashing algorithms ([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [scrypt](https://en.wikipedia.org/wiki/Scrypt), [Argon2](https://en.wikipedia.org/wiki/Argon2))
 
 # Requirements
-* Linux (binutils-dev uuid-dev)
-* OSX
+* Linux (binutils-dev uuid-dev libssl-dev)
+* OSX (openssl)
 * Windows 10
 * [cmake](https://www.cmake.org)
 * [gcc](https://gcc.gnu.org)

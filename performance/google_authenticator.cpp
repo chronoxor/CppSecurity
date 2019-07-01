@@ -11,13 +11,15 @@ using namespace CppSecurity;
 BENCHMARK("Generate Google Authenticator secret")
 {
     static GoogleAuthenticator authenticator;
-    std::password secret = authenticator.GenerateSecret();
+    static std::string salt = authenticator.GenerateSalt();
+    std::password secret = authenticator.GenerateSecret(salt);
 }
 
 BENCHMARK("Generate Google Authenticator token")
 {
     static GoogleAuthenticator authenticator;
-    static std::password secret = authenticator.GenerateSecret();
+    static std::string salt = authenticator.GenerateSalt();
+    static std::password secret = authenticator.GenerateSecret(salt);
     authenticator.GenerateToken(secret);
 }
 

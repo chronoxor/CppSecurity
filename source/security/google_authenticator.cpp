@@ -38,16 +38,42 @@ GoogleAuthenticator::GoogleAuthenticator(size_t secret_length, size_t pin_length
         throwex CppCommon::SecurityException("Invalid pin length!");
 }
 
-std::password GoogleAuthenticator::GenerateSecret() const
+std::string GoogleAuthenticator::GenerateSalt() const
 {
-    std::password result(secret_length(), 0);
+    std::string result(secret_length(), 0);
     CppCommon::Memory::CryptoFill(result.data(), result.size());
-    return GenerateSecret(result);
+    return result;
 }
 
-std::password GoogleAuthenticator::GenerateSecret(std::string_view digest) const
+std::password GoogleAuthenticator::GenerateSecret(std::string_view password) const
 {
-    return std::password(CppCommon::Encoding::Base32Encode(digest));
+    return std::password(CppCommon::Encoding::Base32Encode(password));
+}
+
+std::password GoogleAuthenticator::GenerateSecret(std::string_view password, std::string_view salt) const
+{
+    // Compute the HMAC-SHA1 of the secret and the challenge
+    uint8_t hash[SHA_DIGEST_LENGTH];
+    unsigned int size = SHA_DIGEST_LENGTH;
+#if (OPENSSL_VERSION_NUMBER >= 0x1010000fL)
+    HMAC_CTX* ctx = HMAC_CTX_new();
+    HMAC_Init_ex(ctx, password.data(), (int)password.size(), EVP_sha512(), nullptr);
+    HMAC_Update(ctx, (const uint8_t*)salt.data(), (int)salt.size());
+    HMAC_Final(ctx, hash, &size);
+    HMAC_CTX_free(ctx);
+#else
+    HMAC_CTX ctx;
+    HMAC_CTX_init(&ctx);
+    HMAC_Init_ex(&ctx, password.data(), (int)password.size(), EVP_sha512(), nullptr);
+    HMAC_Update(&ctx, (const uint8_t*)salt.data(), (int)salt.size());
+    HMAC_Final(&ctx, hash, &size);
+    HMAC_CTX_cleanup(&ctx);
+#endif
+
+    std::password result(secret_length(), 0);
+    for (size_t i = 0; i < result.size(); ++i)
+        result[i] = hash[i % size];
+    return GenerateSecret(result);
 }
 
 std::password GoogleAuthenticator::GenerateURL(std::string_view identifier, std::string_view secret) const

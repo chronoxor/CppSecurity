@@ -50,17 +50,25 @@ public:
     //! Get the pin length
     size_t pin_length() const noexcept { return _pin_length; }
 
-    //! Generate the Google Authenticator secret
+    //! Generate the unique password salt
     /*!
+        \return Unique password salt
+    */
+    std::string GenerateSalt() const;
+
+    //! Generate the Google Authenticator secret from the given user password
+    /*!
+        \param password - User password
         \return Generated Google Authenticator secret
     */
-    std::password GenerateSecret() const;
-    //! Generate the Google Authenticator secret from the given secure digest string
+    std::password GenerateSecret(std::string_view password) const;
+    //! Generate the Google Authenticator secret from the given user password and unique salt
     /*!
-        \param digest - Secure digest string
+        \param password - User password
+        \param salt - Unique password salt
         \return Generated Google Authenticator secret
     */
-    std::password GenerateSecret(std::string_view digest) const;
+    std::password GenerateSecret(std::string_view password, std::string_view salt) const;
 
     //! Generate the Google Authenticator URL
     /*!

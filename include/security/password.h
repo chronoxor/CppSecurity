@@ -52,7 +52,8 @@ class password : public std::basic_string<char, std::char_traits<char>, CppSecur
 {
 public:
     using basic_string::basic_string;
-    ~password() { CppCommon::Memory::ZeroFill(data(), size()); }
+    ~password() { clear(); }
+    void clear() noexcept { CppCommon::Memory::ZeroFill(data(), size()); }
 };
 
 } // namespace std

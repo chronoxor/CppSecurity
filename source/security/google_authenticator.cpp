@@ -144,4 +144,9 @@ bool GoogleAuthenticator::Validate(size_t token, std::string_view secret, const 
     return (token == GenerateToken(secret, timestamp));
 }
 
+bool GoogleAuthenticator::Validate(size_t token, std::string_view password, std::string_view salt, const CppCommon::Timestamp& timestamp) const
+{
+    return (token == GenerateToken(GenerateSecret(password, salt), timestamp));
+}
+
 } // namespace CppSecurity

@@ -103,6 +103,15 @@ public:
         \return 'true' if the given token is valid, 'false' if the given token is invalid
     */
     bool Validate(size_t token, std::string_view secret, const CppCommon::Timestamp& timestamp = CppCommon::UtcTimestamp()) const;
+    //! Validate the Google Authenticator token over the given user password, unique salt and UTC timestamp
+    /*!
+        \param token - Google Authenticator token
+        \param password - User password
+        \param salt - Unique password salt
+        \param timestamp - UTC timestamp (default is CppCommon::UtcTimestamp())
+        \return 'true' if the given token is valid, 'false' if the given token is invalid
+    */
+    bool Validate(size_t token, std::string_view password, std::string_view salt, const CppCommon::Timestamp& timestamp = CppCommon::UtcTimestamp()) const;
 
 private:
     size_t _secret_length;

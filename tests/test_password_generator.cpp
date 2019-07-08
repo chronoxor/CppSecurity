@@ -32,7 +32,7 @@ TEST_CASE("Password generator", "[CppSecurity]")
     std::password password3 = generator3.Generate();
     REQUIRE(!generator3.Validate(""));
     REQUIRE(!generator3.Validate("abc"));
-    REQUIRE(generator3.Validate("1234567890"));
+    REQUIRE(!generator3.Validate("1234567890"));
     REQUIRE(generator3.Validate("abcABC1230"));
     REQUIRE(generator3.Validate("abcABC123^&%"));
     REQUIRE(generator3.Validate(password3));
@@ -41,7 +41,7 @@ TEST_CASE("Password generator", "[CppSecurity]")
     std::password password4 = generator4.Generate();
     REQUIRE(!generator4.Validate(""));
     REQUIRE(!generator4.Validate("abc"));
-    REQUIRE(generator4.Validate("1234567890"));
+    REQUIRE(!generator4.Validate("1234567890"));
     REQUIRE(generator4.Validate("abcABC123^&%"));
     REQUIRE(generator4.Validate(password4));
 }

@@ -57,14 +57,14 @@ std::password GoogleAuthenticator::GenerateSecret(std::string_view password, std
     unsigned int size = SHA_DIGEST_LENGTH;
 #if (OPENSSL_VERSION_NUMBER >= 0x1010000fL)
     HMAC_CTX* ctx = HMAC_CTX_new();
-    HMAC_Init_ex(ctx, password.data(), (int)password.size(), EVP_sha512(), nullptr);
+    HMAC_Init_ex(ctx, password.data(), (int)password.size(), EVP_sha1(), nullptr);
     HMAC_Update(ctx, (const uint8_t*)salt.data(), (int)salt.size());
     HMAC_Final(ctx, hash, &size);
     HMAC_CTX_free(ctx);
 #else
     HMAC_CTX ctx;
     HMAC_CTX_init(&ctx);
-    HMAC_Init_ex(&ctx, password.data(), (int)password.size(), EVP_sha512(), nullptr);
+    HMAC_Init_ex(&ctx, password.data(), (int)password.size(), EVP_sha1(), nullptr);
     HMAC_Update(&ctx, (const uint8_t*)salt.data(), (int)salt.size());
     HMAC_Final(&ctx, hash, &size);
     HMAC_CTX_cleanup(&ctx);

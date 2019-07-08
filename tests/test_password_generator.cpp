@@ -15,8 +15,8 @@ TEST_CASE("Password generator", "[CppSecurity]")
     REQUIRE(!generator1.Validate(""));
     REQUIRE(!generator1.Validate("abc"));
     REQUIRE(!generator1.Validate("1234567890"));
-    REQUIRE(!generator1.Validate("abcABC123^&%"));
     REQUIRE(generator1.Validate("abcdefghij"));
+    REQUIRE(generator1.Validate("abcABC123^&%"));
     REQUIRE(generator1.Validate(password1));
 
     PasswordGenerator generator2(8, PasswordFlags::lower | PasswordFlags::upper);
@@ -24,8 +24,8 @@ TEST_CASE("Password generator", "[CppSecurity]")
     REQUIRE(!generator2.Validate(""));
     REQUIRE(!generator2.Validate("abc"));
     REQUIRE(!generator2.Validate("1234567890"));
-    REQUIRE(!generator2.Validate("abcABC123^&%"));
     REQUIRE(generator2.Validate("abcdeFGHIJ"));
+    REQUIRE(generator2.Validate("abcABC123^&%"));
     REQUIRE(generator2.Validate(password2));
 
     PasswordGenerator generator3(10, PasswordFlags::lower | PasswordFlags::upper | PasswordFlags::digits);
@@ -33,8 +33,8 @@ TEST_CASE("Password generator", "[CppSecurity]")
     REQUIRE(!generator3.Validate(""));
     REQUIRE(!generator3.Validate("abc"));
     REQUIRE(generator3.Validate("1234567890"));
-    REQUIRE(!generator3.Validate("abcABC123^&%"));
     REQUIRE(generator3.Validate("abcABC1230"));
+    REQUIRE(generator3.Validate("abcABC123^&%"));
     REQUIRE(generator3.Validate(password3));
 
     PasswordGenerator generator4(10, PasswordFlags::lower | PasswordFlags::upper | PasswordFlags::digits | PasswordFlags::symbols);

@@ -50,13 +50,13 @@ std::password PasswordGenerator::Generate() const
     CppCommon::Memory::CryptoFill(result.data(), result.size());
 
     if ((flags() & PasswordFlags::lower) != 0)
-        result[offset++] = lower[result[offset] % (CppCommon::countof(lower) - 1)];
+        result[offset] = lower[result[offset] % (CppCommon::countof(lower) - 1)], ++offset;
     if ((flags() & PasswordFlags::upper) != 0)
-        result[offset++] = upper[result[offset] % (CppCommon::countof(upper) - 1)];
+        result[offset] = upper[result[offset] % (CppCommon::countof(upper) - 1)], ++offset;
     if ((flags() & PasswordFlags::digits) != 0)
-        result[offset++] = digits[result[offset] % (CppCommon::countof(digits) - 1)];
+        result[offset] = digits[result[offset] % (CppCommon::countof(digits) - 1)], ++offset;
     if ((flags() & PasswordFlags::symbols) != 0)
-        result[offset++] = symbols[result[offset] % (CppCommon::countof(symbols) - 1)];
+        result[offset] = symbols[result[offset] % (CppCommon::countof(symbols) - 1)], ++offset;
 
     for (size_t i = offset; i < length(); ++i)
         result[i] = cache[result[i] % cache.size()];

@@ -10,6 +10,7 @@
 
 #include "errors/exceptions.h"
 #include "memory/memory.h"
+#include "utility/countof.h"
 
 #include <cassert>
 
@@ -29,20 +30,37 @@ PasswordGenerator::PasswordGenerator(size_t length, PasswordFlags flags)
 
 std::password PasswordGenerator::Generate() const
 {
+    char lower[] = "abcdefghijklmnopqrstuvwxyz";
+    char upper[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char digits[] = "012345678901234567890123456789";
+    char symbols[] = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
     std::string cache;
     if ((flags() & PasswordFlags::lower) != 0)
-        cache += "abcdefghijklmnopqrstuvwxyz";
+        cache += lower;
     if ((flags() & PasswordFlags::upper) != 0)
-        cache += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        cache += upper;
     if ((flags() & PasswordFlags::digits) != 0)
-        cache += "012345678901234567890123456789";
+        cache += digits;
     if ((flags() & PasswordFlags::symbols) != 0)
-        cache += "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+        cache += symbols;
 
+    size_t offset = 0;
     std::password result(length(), 0);
     CppCommon::Memory::CryptoFill(result.data(), result.size());
-    for (size_t i = 0; i < result.size(); ++i)
+
+    if ((flags() & PasswordFlags::lower) != 0)
+        result[offset++] = lower[result[offset] % (CppCommon::countof(lower) - 1)];
+    if ((flags() & PasswordFlags::upper) != 0)
+        result[offset++] = upper[result[offset] % (CppCommon::countof(upper) - 1)];
+    if ((flags() & PasswordFlags::digits) != 0)
+        result[offset++] = digits[result[offset] % (CppCommon::countof(digits) - 1)];
+    if ((flags() & PasswordFlags::symbols) != 0)
+        result[offset++] = symbols[result[offset] % (CppCommon::countof(symbols) - 1)];
+
+    for (size_t i = offset; i < length(); ++i)
         result[i] = cache[result[i] % cache.size()];
+
     return result;
 }
 

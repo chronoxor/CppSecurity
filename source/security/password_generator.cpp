@@ -22,10 +22,6 @@ PasswordGenerator::PasswordGenerator(size_t length, PasswordFlags flags)
     assert((length >= 6) && "Password should be at least 6 bytes!");
     if (length < 6)
         throwex CppCommon::SecurityException("Invalid password length!");
-
-    assert((flags != PasswordFlags::none) && "Password flags should not be empty!");
-    if (flags == PasswordFlags::none)
-        throwex CppCommon::SecurityException("Invalid password flags!");
 }
 
 std::password PasswordGenerator::Generate() const

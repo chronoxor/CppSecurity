@@ -70,6 +70,13 @@ before_install:
   - if [ "$OS" == "osx" ]; then brew install graphviz; fi
   # openssl
   - if [ "$OS" == "osx" ]; then export OPENSSL_ROOT_DIR=$(brew --prefix openssl); fi
+  - if [ "$OS" == "osx" ]; then echo $OPENSSL_ROOT_DIR; fi
+  - if [ "$OS" == "osx" ]; then cd $OPENSSL_ROOT_DIR; fi
+  - if [ "$OS" == "osx" ]; then ls; fi
+  - if [ "$OS" == "osx" ]; then cd $OPENSSL_ROOT_DIR/include; fi
+  - if [ "$OS" == "osx" ]; then ls; fi
+  - if [ "$OS" == "osx" ]; then cd $OPENSSL_ROOT_DIR/lib; fi
+  - if [ "$OS" == "osx" ]; then ls; fi
   # cmake
   - cmake --version
   # doxygen support

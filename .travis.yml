@@ -66,13 +66,10 @@ before_install:
   - if [ "$OS" != "osx" ] && [ "$COMPILER" = "clang" ]; then export CC="clang-${CLANG_VERSION}" CXX="clang++-${CLANG_VERSION}"; fi
   # brew, doxygen, graphviz
   - if [ "$OS" == "osx" ]; then brew update; fi
-  - if [ "$OS" == "osx" ]; then brew upgrade cmake; fi
   - if [ "$OS" == "osx" ]; then brew install doxygen; fi
   - if [ "$OS" == "osx" ]; then brew install graphviz; fi
   # openssl
   - if [ "$OS" == "osx" ]; then export OPENSSL_ROOT_DIR=$(brew --prefix openssl); fi
-  - if [ "$OS" == "osx" ]; then export OPENSSL_INCLUDE_DIR=$OPENSSL_ROOT_DIR/include; fi
-  - if [ "$OS" == "osx" ]; then export OPENSSL_CRYPTO_LIBRARY=/usr/lib/libcrypto.dylib; fi
   # cmake
   - cmake --version
   # doxygen support

@@ -24,18 +24,27 @@
 
 <h1 id="NAME">NAME</h1>
 
-<p>SSL_load_client_CA_file - load certificate names from file</p>
+<p>SSL_load_client_CA_file, SSL_add_file_cert_subjects_to_stack, SSL_add_dir_cert_subjects_to_stack - load certificate names</p>
 
 <h1 id="SYNOPSIS">SYNOPSIS</h1>
 
 <pre><code> <span class="comment">#include &lt;openssl/ssl.h&gt;</span>
  
  <span class="variable">STACK_OF</span><span class="operator">(</span><span class="variable">X509_NAME</span><span class="operator">)</span> <span class="variable">*SSL_load_client_CA_file</span><span class="operator">(</span><span class="variable">const</span> <span class="variable">char</span> <span class="variable">*file</span><span class="operator">);</span>
+ 
+ <span class="keyword">int</span> <span class="variable">SSL_add_file_cert_subjects_to_stack</span><span class="operator">(</span><span class="variable">STACK_OF</span><span class="operator">(</span><span class="variable">X509_NAME</span><span class="operator">)</span> <span class="variable">*stack</span><span class="operator">,</span>
+                                         <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*file</span><span class="operator">)</span>
+ <span class="keyword">int</span> <span class="variable">SSL_add_dir_cert_subjects_to_stack</span><span class="operator">(</span><span class="variable">STACK_OF</span><span class="operator">(</span><span class="variable">X509_NAME</span><span class="operator">)</span> <span class="variable">*stack</span><span class="operator">,</span>
+                                        <span class="variable">const</span> <span class="variable">char</span> <span class="variable">*dir</span><span class="operator">)</span>
 </code></pre>
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
-<p>SSL_load_client_CA_file() reads certificates from <b>file</b> and returns a STACK_OF(X509_NAME) with the subject names found.</p>
+<p>SSL_load_client_CA_file() reads certificates from <i>file</i> and returns a STACK_OF(X509_NAME) with the subject names found.</p>
+
+<p>SSL_add_file_cert_subjects_to_stack() reads certificates from <i>file</i>, and adds their subject name to the already existing <i>stack</i>.</p>
+
+<p>SSL_add_dir_cert_subjects_to_stack() reads certificates from every file in the directory <i>dir</i>, and adds their subject name to the already existing <i>stack</i>.</p>
 
 <h1 id="NOTES">NOTES</h1>
 

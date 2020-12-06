@@ -1,7 +1,7 @@
 # CppSecurity
 
-[![Linux build status](https://img.shields.io/travis/chronoxor/com/CppSecurity/master?label=Linux)](https://travis-ci.com/chronoxor/CppSecurity)
-[![OSX build status](https://img.shields.io/travis/chronoxor/com/CppSecurity/master?label=OSX)](https://travis-ci.com/chronoxor/CppSecurity)
+[![Linux build status](https://img.shields.io/travis/com/chronoxor/CppSecurity/master?label=Linux)](https://travis-ci.com/chronoxor/CppSecurity)
+[![OSX build status](https://img.shields.io/travis/com/chronoxor/CppSecurity/master?label=OSX)](https://travis-ci.com/chronoxor/CppSecurity)
 [![Cygwin build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Cygwin)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
 [![MSYS2 build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MSYS2)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
 [![MinGW build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MinGW)](https://ci.appveyor.com/project/chronoxor/CppSecurity)

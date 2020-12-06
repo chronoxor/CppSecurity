@@ -1,11 +1,11 @@
 # CppSecurity
 
-[![Linux build status](https://img.shields.io/travis/chronoxor/CppSecurity/master.svg?label=Linux)](https://travis-ci.com/chronoxor/CppSecurity)
-[![OSX build status](https://img.shields.io/travis/chronoxor/CppSecurity/master.svg?label=OSX)](https://travis-ci.com/chronoxor/CppSecurity)
-[![Cygwin build status](https://img.shields.io/appveyor/ci/chronoxor/CppSecurity/master.svg?label=Cygwin)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![MSYS2 build status](https://img.shields.io/appveyor/ci/chronoxor/CppSecurity/master.svg?label=MSYS2)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![MinGW build status](https://img.shields.io/appveyor/ci/chronoxor/CppSecurity/master.svg?label=MinGW)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![Windows build status](https://img.shields.io/appveyor/ci/chronoxor/CppSecurity/master.svg?label=Windows)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
+[![Linux build status](https://img.shields.io/travis/chronoxor/com/CppSecurity/master?label=Linux)](https://travis-ci.com/chronoxor/CppSecurity)
+[![OSX build status](https://img.shields.io/travis/chronoxor/com/CppSecurity/master?label=OSX)](https://travis-ci.com/chronoxor/CppSecurity)
+[![Cygwin build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Cygwin)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
+[![MSYS2 build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MSYS2)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
+[![MinGW build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MinGW)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
+[![Windows build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Windows)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
 
 C++ Security Library contains initial templates for a new C++ library project.
 

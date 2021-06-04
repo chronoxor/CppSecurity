@@ -7,7 +7,8 @@
 [![MinGW build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MinGW)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
 [![Windows build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Windows)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
 
-C++ Security Library contains initial templates for a new C++ library project.
+C++ Security Library provides different security functionality for password
+generation, password hashing algorithms and Google Authenticator.
 
 [CppSecurity API reference](https://chronoxor.github.io/CppSecurity/index.html)
 

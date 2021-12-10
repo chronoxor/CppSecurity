@@ -30,7 +30,7 @@ public:
     PasswordAllocator(const PasswordAllocator&) throw() {}
     template <class U> PasswordAllocator(const PasswordAllocator<U>&) throw() {}
 
-    void deallocate(pointer p, size_type n)
+    void deallocate(T* p, size_type n)
     {
         CppCommon::Memory::ZeroFill(p, n * sizeof(T));
         std::allocator<T>::deallocate(p, n);

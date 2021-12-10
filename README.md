@@ -1,11 +1,14 @@
 # CppSecurity
 
-[![Linux build status](https://img.shields.io/travis/com/chronoxor/CppSecurity/master?label=Linux)](https://travis-ci.com/chronoxor/CppSecurity)
-[![OSX build status](https://img.shields.io/travis/com/chronoxor/CppSecurity/master?label=OSX)](https://travis-ci.com/chronoxor/CppSecurity)
-[![Cygwin build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Cygwin)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![MSYS2 build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MSYS2)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![MinGW build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=MinGW)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
-[![Windows build status](https://img.shields.io/appveyor/build/chronoxor/CppSecurity/master?label=Windows)](https://ci.appveyor.com/project/chronoxor/CppSecurity)
+![Linux (clang)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-clang.yml/badge.svg)
+![Linux (gcc)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-gcc.yml/badge.svg)
+<br/>
+![MacOS](https://github.com/chronoxor/CppSecurity/actions/workflows/build-macos.yml/badge.svg)
+<br/>
+![Windows (Cygwin)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-cygwin.yml/badge.svg)
+![Windows (MinGW)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-mingw.yml/badge.svg)
+![Windows (MSYS2)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-msys2.yml/badge.svg)
+![Windows (Visual Studio)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-msvc.yml/badge.svg)
 
 C++ Security Library provides different security functionality for password
 generation, password hashing algorithms and Google Authenticator.

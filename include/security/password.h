@@ -20,8 +20,9 @@ template <class T>
 class PasswordAllocator : public std::allocator<T>
 {
 public:
-    typedef typename std::allocator<T>::pointer pointer;
+    typedef typename std::allocator<T>::value_type value_type;
     typedef typename std::allocator<T>::size_type size_type;
+    typedef typename std::allocator<T>::difference_type difference_type;
 
     template<class U> struct rebind { typedef PasswordAllocator<U> other; };
 

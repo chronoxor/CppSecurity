@@ -19,7 +19,7 @@ if(NOT TARGET libscrypt)
     # C4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
     set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS} /wd4013 /wd4131 /wd4244 /wd4245")
   else()
-    set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}")
+    set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS} -Wno-array-parameter")
   endif()
   target_include_directories(libscrypt PUBLIC "libscrypt")
 

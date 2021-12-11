@@ -5,7 +5,7 @@ CppBenchmark modules/CppBenchmark https://github.com/chronoxor/CppBenchmark.git 
 CppCommon modules/CppCommon https://github.com/chronoxor/CppCommon.git master
 fastpbkdf2 modules/fastpbkdf2 https://github.com/chronoxor/fastpbkdf2.git master
 libbcrypt modules/libbcrypt https://github.com/chronoxor/libbcrypt.git master
-libscrypt modules/libscrypt https://github.com/chronoxor/libscrypt.git master
+libscrypt modules/libscrypt https://github.com/technion/libscrypt.git master
 
 # Scripts
 build build https://github.com/chronoxor/CppBuildScripts.git master

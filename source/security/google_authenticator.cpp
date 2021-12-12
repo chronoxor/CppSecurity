@@ -78,12 +78,12 @@ std::password GoogleAuthenticator::GenerateSecret(std::string_view password, std
 
 std::password GoogleAuthenticator::GenerateURL(std::string_view identifier, std::string_view secret) const
 {
-    return std::password(CppCommon::Encoding::URLEncode("otpauth://totp/{}?secret={}"_format(identifier, secret)));
+    return std::password(CppCommon::Encoding::URLEncode(format("otpauth://totp/{}?secret={}", identifier, secret)));
 }
 
 std::password GoogleAuthenticator::GenerateQRCodeLink(std::string_view url, size_t width, size_t height) const
 {
-    return std::password("https://chart.apis.google.com/chart?cht=qr&chs={}x{}&chl={}"_format(width, height, url));
+    return std::password(format("https://chart.apis.google.com/chart?cht=qr&chs={}x{}&chl={}", width, height, url));
 }
 
 size_t GoogleAuthenticator::GenerateToken(std::string_view secret, const CppCommon::Timestamp& timestamp) const

@@ -28,14 +28,14 @@ generation, password hashing algorithms and Google Authenticator.
     * [Benchmark 6: 'Argon2' password hashing algorithm](#benchmark-6-argon2-password-hashing-algorithm)
 
 # Features
-* Cross platform (Linux, OSX, Windows)
+* Cross platform (Linux, MacOS, Windows)
 * Password generator
 * [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) support
 * Password hashing algorithms ([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [scrypt](https://en.wikipedia.org/wiki/Scrypt), [Argon2](https://en.wikipedia.org/wiki/Argon2))
 
 # Requirements
 * Linux (binutils-dev uuid-dev libssl-dev)
-* OSX (openssl)
+* MacOS (openssl)
 * Windows 10
 * [cmake](https://www.cmake.org)
 * [gcc](https://gcc.gnu.org)
@@ -71,7 +71,7 @@ cd build
 ./unix.sh
 ```
 
-### OSX
+### MacOS
 ```shell
 cd build
 ./unix.sh

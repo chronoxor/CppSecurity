@@ -15,7 +15,7 @@ namespace CppSecurity {
 
 //! 'bcrypt' password hashing algorithm
 /*!
-    'bcrypt' is a password hashing function designed by Niels Provos and David Mazières,
+    'bcrypt' is a password hashing function designed by Niels Provos and David Mazieres,
     based on the Blowfish cipher, and presented at USENIX in 1999. Besides incorporating
     a salt to protect against rainbow table attacks, bcrypt is an adaptive function: over
     time, the iteration count can be increased to make it slower, so it remains resistant

@@ -34,9 +34,9 @@ generation, password hashing algorithms and Google Authenticator.
 * Password hashing algorithms ([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [scrypt](https://en.wikipedia.org/wiki/Scrypt), [Argon2](https://en.wikipedia.org/wiki/Argon2))
 
 # Requirements
-* Linux (binutils-dev uuid-dev libssl-dev)
-* MacOS (openssl)
-* Windows 10
+* Linux
+* MacOS
+* Windows
 * [cmake](https://www.cmake.org)
 * [gcc](https://gcc.gnu.org)
 * [git](https://git-scm.com)
@@ -52,6 +52,11 @@ Optional:
 * [Visual Studio](https://www.visualstudio.com)
 
 # How to build?
+
+### Linux: install required packages
+```shell
+sudo apt-get install -y binutils-dev uuid-dev libssl-dev
+```
 
 ### Install [gil (git links) tool](https://github.com/chronoxor/gil)
 ```shell

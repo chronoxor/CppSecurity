@@ -16,8 +16,8 @@
 
 #include <cassert>
 
+#include <openssl/evp.h>
 #include <openssl/hmac.h>
-#include <openssl/sha.h>
 
 namespace CppSecurity {
 
@@ -47,10 +47,10 @@ std::password GoogleAuthenticator::GenerateSecret(std::string_view password) con
 std::password GoogleAuthenticator::GenerateSecret(std::string_view password, std::string_view salt) const
 {
     // Compute the HMAC-SHA1 of the secret and the challenge
-    uint8_t hash[SHA_DIGEST_LENGTH];
-    unsigned int size = SHA_DIGEST_LENGTH;
+    uint8_t hash[EVP_MAX_MD_SIZE];
+    unsigned int size = EVP_MAX_MD_SIZE;
     if (HMAC(EVP_sha1(), password.data(), (int)password.size(), (const uint8_t*)salt.data(), (int)salt.size(), hash, &size) == nullptr)
-        throwex CppCommon::SecurityException("HMAC/SHA1 calculation error!");
+        throwex CppCommon::SecurityException("HMAC-SHA1 calculation error!");
 
     // Generate the secret
     std::password result(secret_length(), 0);
@@ -83,13 +83,13 @@ size_t GoogleAuthenticator::GenerateToken(std::string_view secret, const CppComm
     std::password key(CppCommon::Encoding::Base32Decode(secret));
 
     // Compute the HMAC-SHA1 of the secret and the challenge
-    uint8_t hash[SHA_DIGEST_LENGTH];
-    unsigned int size = SHA_DIGEST_LENGTH;
+    uint8_t hash[EVP_MAX_MD_SIZE];
+    unsigned int size = EVP_MAX_MD_SIZE;
     if (HMAC(EVP_sha1(), key.data(), (int)key.size(), challenge, CppCommon::countof(challenge), hash, &size) == nullptr)
-        throwex CppCommon::SecurityException("HMAC/SHA1 calculation error!");
+        throwex CppCommon::SecurityException("HMAC-SHA1 calculation error!");
 
     // Pick the offset where to sample our hash value for the actual verification code
-    size_t offset = hash[SHA_DIGEST_LENGTH - 1] & 0xF;
+    size_t offset = hash[size - 1] & 0xF;
 
     // Compute the truncated hash in a byte-order independent loop
     size_t truncated = 0;

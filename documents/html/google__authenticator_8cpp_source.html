@@ -82,8 +82,8 @@ $(function() {
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;openssl/hmac.h&gt;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;openssl/sha.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;openssl/evp.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;openssl/hmac.h&gt;</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_cpp_security.html">CppSecurity</a> {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
@@ -113,10 +113,10 @@ $(function() {
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_cpp_security_1_1_google_authenticator.html#ad90b1619c02df35bc125d0303f5c0e20">   47</a></span>&#160;<a class="code" href="classstd_1_1password.html">std::password</a> <a class="code" href="class_cpp_security_1_1_google_authenticator.html#aab07afac4ccf46ca40f1c7290e2bdcac">GoogleAuthenticator::GenerateSecret</a>(std::string_view password, std::string_view salt)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword"></span>{</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// Compute the HMAC-SHA1 of the secret and the challenge</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t hash[SHA_DIGEST_LENGTH];</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = SHA_DIGEST_LENGTH;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t hash[EVP_MAX_MD_SIZE];</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = EVP_MAX_MD_SIZE;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">if</span> (HMAC(EVP_sha1(), password.data(), (<span class="keywordtype">int</span>)password.size(), (<span class="keyword">const</span> uint8_t*)salt.data(), (<span class="keywordtype">int</span>)salt.size(), hash, &amp;size) == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        throwex CppCommon::SecurityException(<span class="stringliteral">&quot;HMAC/SHA1 calculation error!&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        throwex CppCommon::SecurityException(<span class="stringliteral">&quot;HMAC-SHA1 calculation error!&quot;</span>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Generate the secret</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classstd_1_1password.html">std::password</a> result(<a class="code" href="class_cpp_security_1_1_google_authenticator.html#ad4dd13304b031225ebefc770ed917f33">secret_length</a>(), 0);</div>
@@ -149,13 +149,13 @@ $(function() {
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="classstd_1_1password.html">std::password</a> key(CppCommon::Encoding::Base32Decode(secret));</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// Compute the HMAC-SHA1 of the secret and the challenge</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint8_t hash[SHA_DIGEST_LENGTH];</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = SHA_DIGEST_LENGTH;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint8_t hash[EVP_MAX_MD_SIZE];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = EVP_MAX_MD_SIZE;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span> (HMAC(EVP_sha1(), key.data(), (<span class="keywordtype">int</span>)key.size(), challenge, CppCommon::countof(challenge), hash, &amp;size) == <span class="keyword">nullptr</span>)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        throwex CppCommon::SecurityException(<span class="stringliteral">&quot;HMAC/SHA1 calculation error!&quot;</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        throwex CppCommon::SecurityException(<span class="stringliteral">&quot;HMAC-SHA1 calculation error!&quot;</span>);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Pick the offset where to sample our hash value for the actual verification code</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">size_t</span> offset = hash[SHA_DIGEST_LENGTH - 1] &amp; 0xF;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">size_t</span> offset = hash[size - 1] &amp; 0xF;</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Compute the truncated hash in a byte-order independent loop</span></div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">size_t</span> truncated = 0;</div>

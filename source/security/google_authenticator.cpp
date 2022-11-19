@@ -19,10 +19,7 @@
 #include <openssl/opensslv.h>
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
-#if (OPENSSL_VERSION_NUMBER >= 0x1000000fL)
 #include <openssl/sha.h>
-#else
-#include <openssl/sha1.h>
 #endif
 
 namespace CppSecurity {
@@ -55,21 +52,13 @@ std::password GoogleAuthenticator::GenerateSecret(std::string_view password, std
     // Compute the HMAC-SHA1 of the secret and the challenge
     uint8_t hash[SHA_DIGEST_LENGTH];
     unsigned int size = SHA_DIGEST_LENGTH;
-#if (OPENSSL_VERSION_NUMBER >= 0x1010000fL)
     HMAC_CTX* ctx = HMAC_CTX_new();
     HMAC_Init_ex(ctx, password.data(), (int)password.size(), EVP_sha1(), nullptr);
     HMAC_Update(ctx, (const uint8_t*)salt.data(), (int)salt.size());
     HMAC_Final(ctx, hash, &size);
     HMAC_CTX_free(ctx);
-#else
-    HMAC_CTX ctx;
-    HMAC_CTX_init(&ctx);
-    HMAC_Init_ex(&ctx, password.data(), (int)password.size(), EVP_sha1(), nullptr);
-    HMAC_Update(&ctx, (const uint8_t*)salt.data(), (int)salt.size());
-    HMAC_Final(&ctx, hash, &size);
-    HMAC_CTX_cleanup(&ctx);
-#endif
 
+    // Generate the secret
     std::password result(secret_length(), 0);
     for (size_t i = 0; i < result.size(); ++i)
         result[i] = hash[i % size];
@@ -102,20 +91,11 @@ size_t GoogleAuthenticator::GenerateToken(std::string_view secret, const CppComm
     // Compute the HMAC-SHA1 of the secret and the challenge
     uint8_t hash[SHA_DIGEST_LENGTH];
     unsigned int size = SHA_DIGEST_LENGTH;
-#if (OPENSSL_VERSION_NUMBER >= 0x1010000fL)
     HMAC_CTX* ctx = HMAC_CTX_new();
     HMAC_Init_ex(ctx, key.data(), (int)key.size(), EVP_sha1(), nullptr);
     HMAC_Update(ctx, challenge, CppCommon::countof(challenge));
     HMAC_Final(ctx, hash, &size);
     HMAC_CTX_free(ctx);
-#else
-    HMAC_CTX ctx;
-    HMAC_CTX_init(&ctx);
-    HMAC_Init_ex(&ctx, key.data(), (int)key.size(), EVP_sha1(), nullptr);
-    HMAC_Update(&ctx, challenge, CppCommon::countof(challenge));
-    HMAC_Final(&ctx, hash, &size);
-    HMAC_CTX_cleanup(&ctx);
-#endif
 
     // Pick the offset where to sample our hash value for the actual verification code
     size_t offset = hash[SHA_DIGEST_LENGTH - 1] & 0xF;

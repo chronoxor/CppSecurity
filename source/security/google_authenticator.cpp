@@ -16,11 +16,8 @@
 
 #include <cassert>
 
-#include <openssl/opensslv.h>
-#include <openssl/evp.h>
 #include <openssl/hmac.h>
 #include <openssl/sha.h>
-#endif
 
 namespace CppSecurity {
 

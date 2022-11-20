@@ -26,6 +26,7 @@ generation, password hashing algorithms and Google Authenticator.
     * [Benchmark 4: 'bcrypt' password hashing algorithm](#benchmark-4-bcrypt-password-hashing-algorithm)
     * [Benchmark 5: 'scrypt' password hashing algorithm](#benchmark-5-scrypt-password-hashing-algorithm)
     * [Benchmark 6: 'Argon2' password hashing algorithm](#benchmark-6-argon2-password-hashing-algorithm)
+    * [Benchmark 7: Cipher](#benchmark-7-cipher)
 
 # Features
 * Cross platform (Linux, MacOS, Windows)
@@ -447,5 +448,54 @@ Maximal time: 791.300 mcs/op
 Total time: 4.698 s
 Total operations: 6363
 Operations throughput: 1354 ops/s
+===============================================================================
+```
+
+## Benchmark 7: Cipher
+Benchmark source file: [cipher.cpp](https://github.com/chronoxor/CppSecurity/blob/master/performance/cipher.cpp)
+
+Benchmark report is the following:
+```
+===============================================================================
+CppBenchmark report. Version 1.0.3.0
+===============================================================================
+CPU architecture: Intel(R) Core(TM) i7-8650U CPU @ 1.90GHz
+CPU logical cores: 8
+CPU physical cores: 4
+CPU clock speed: 2.112 GHz
+CPU Hyper-Threading: enabled
+RAM total: 15.387 GiB
+RAM free: 5.900 GiB
+===============================================================================
+OS version: Microsoft Windows 10 Enterprise Edition (build 18363), 64-bit
+OS bits: 64-bit
+Process bits: 64-bit
+Process configuration: release
+Local timestamp: Sun Nov 20 23:06:31 2022
+UTC timestamp: Sun Nov 20 19:06:31 2022
+===============================================================================
+Benchmark: Cipher encrypt
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Cipher encrypt
+Average time: 182 ns/op
+Minimal time: 175 ns/op
+Maximal time: 188 ns/op
+Total time: 3.819 s
+Total operations: 20915100
+Operations throughput: 5475649 ops/s
+===============================================================================
+Benchmark: Cipher decrypt
+Attempts: 5
+Duration: 5 seconds
+-------------------------------------------------------------------------------
+Phase: Cipher decrypt
+Average time: 292 ns/op
+Minimal time: 201 ns/op
+Maximal time: 297 ns/op
+Total time: 3.207 s
+Total operations: 10983063
+Operations throughput: 3423788 ops/s
 ===============================================================================
 ```

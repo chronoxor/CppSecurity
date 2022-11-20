@@ -14,10 +14,10 @@ namespace CppSecurity {
 
 std::string PBKDF2PasswordHashing::_name = "PBKDF2";
 
-PBKDF2PasswordHashing::PBKDF2PasswordHashing(size_t hash_length, size_t salt_length, size_t iterations, PBKDF2 algorithm)
+PBKDF2PasswordHashing::PBKDF2PasswordHashing(size_t hash_length, size_t salt_length, PBKDF2 algorithm, size_t iterations)
     : PasswordHashing(hash_length, salt_length),
-      _iterations(iterations),
-      _algorithm(algorithm)
+      _algorithm(algorithm),
+      _iterations(iterations)
 {
 }
 

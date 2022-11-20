@@ -34,7 +34,7 @@ public:
     PasswordHashing(size_t hash_length = 32, size_t salt_length = 32);
     PasswordHashing(const PasswordHashing&) = default;
     PasswordHashing(PasswordHashing&&) = default;
-    ~PasswordHashing() = default;
+    virtual ~PasswordHashing() = default;
 
     PasswordHashing& operator=(const PasswordHashing&) = default;
     PasswordHashing& operator=(PasswordHashing&&) = default;

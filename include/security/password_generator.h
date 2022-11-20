@@ -59,7 +59,7 @@ public:
     PasswordGenerator(size_t length = 12, PasswordFlags flags = PasswordFlags::lower | PasswordFlags::upper | PasswordFlags::digits);
     PasswordGenerator(const PasswordGenerator&) = default;
     PasswordGenerator(PasswordGenerator&&) = default;
-    ~PasswordGenerator() = default;
+    virtual ~PasswordGenerator() = default;
 
     PasswordGenerator& operator=(const PasswordGenerator&) = default;
     PasswordGenerator& operator=(PasswordGenerator&&) = default;

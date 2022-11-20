@@ -26,7 +26,7 @@ int main(int argc, char** argv)
     std::cout << "Generated URL: " << url << std::endl;
     std::cout << "Generated QR Code link: " << qr << std::endl;
 
-    std::cout << "Please enter Google Authenticator token to validate. Enter '0' to exit..." << std::endl;
+    std::cout << "Please enter Google Authenticator tokens to validate. Enter '0' to exit..." << std::endl;
 
     // Perform text input
     std::string line;

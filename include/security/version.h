@@ -28,7 +28,7 @@ GitHub: https://github.com/chronoxor/CppSecurity
 namespace CppSecurity {
 
 //! Project version
-const char version[] = "1.0.2.0";
+const char version[] = "1.1.0.0";
 
 } // namespace CppSecurity
 

@@ -33,6 +33,7 @@ generation, password hashing algorithms and Google Authenticator.
 * Password generator
 * [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) support
 * Password hashing algorithms ([PBKDF2](https://en.wikipedia.org/wiki/PBKDF2), [bcrypt](https://en.wikipedia.org/wiki/Bcrypt), [scrypt](https://en.wikipedia.org/wiki/Scrypt), [Argon2](https://en.wikipedia.org/wiki/Argon2))
+* Symmetric ciphers ([AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), [ARIA](https://en.wikipedia.org/wiki/ARIA_(cipher)), [Camellia](https://en.wikipedia.org/wiki/Camellia_(cipher)))
 
 # Requirements
 * Linux

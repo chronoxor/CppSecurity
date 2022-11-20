@@ -9,7 +9,7 @@
 namespace CppSecurity {
 
 template <class TOutputStream>
-TOutputStream& operator<<(TOutputStream& stream, PasswordFlags flags)
+inline TOutputStream& operator<<(TOutputStream& stream, PasswordFlags flags)
 {
     bool first = true;
     if ((flags & PasswordFlags::lower) && ((flags & PasswordFlags::lower).value() == PasswordFlags::lower))

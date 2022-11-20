@@ -21,6 +21,15 @@ enum class PBKDF2
     HMAC_SHA512     //!< HMAC-SHA512
 };
 
+//! Stream output: 'PBKDF2' algorithm
+/*!
+    \param stream - Output stream
+    \param algorithm - 'PBKDF2' algorithm
+    \return Output stream
+*/
+template <class TOutputStream>
+TOutputStream& operator<<(TOutputStream& stream, PBKDF2 algorithm);
+
 //! 'PBKDF2' password hashing algorithm
 /*!
     'PBKDF2' (Password-Based Key Derivation Function 2) are key derivation functions with
@@ -72,5 +81,7 @@ private:
 /*! \example password_hashing_pbkdf2.cpp 'PBKDF2' password hashing example */
 
 } // namespace CppSecurity
+
+#include "password_hashing_pbkdf2.inl"
 
 #endif // CPPSECURITY_PASSWORD_HASHING_PBKDF2_H

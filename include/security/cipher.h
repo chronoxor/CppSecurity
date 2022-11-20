@@ -64,11 +64,11 @@ public:
         \param iterations - Count key hashing iterations (default is 1000)
     */
     Cipher(std::string_view secret, std::string_view salt, CipherAlgorithm algorithm = CipherAlgorithm::AES256, size_t iterations = 1000) : Cipher(algorithm, iterations) { Initialize(secret, salt); }
-    Cipher(const Cipher&) = default;
+    Cipher(const Cipher&) = delete;
     Cipher(Cipher&&) = default;
     ~Cipher() = default;
 
-    Cipher& operator=(const Cipher&) = default;
+    Cipher& operator=(const Cipher&) = delete;
     Cipher& operator=(Cipher&&) = default;
 
     //! Get the cipher algorithm

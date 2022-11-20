@@ -28,7 +28,7 @@ include(SystemInformation)
 
 # External packages
 if(APPLE)
-  set(OPENSSL_ROOT_DIR "/usr/local/opt/openssl@3")
+  set(OPENSSL_ROOT_DIR "/usr/local/opt/openssl@1.1.1")
 elseif(CYGWIN)
   set(OPENSSL_ROOT_DIR "/usr/lib")
   set(OPENSSL_INCLUDE_DIR "/usr/include")

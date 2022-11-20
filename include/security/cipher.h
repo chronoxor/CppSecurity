@@ -82,7 +82,7 @@ public:
     /*!
         \return Unique secret salt
     */
-    std::string GenerateSalt() const;
+    static std::string GenerateSalt();
 
     //! Initialize the cipher with the given secret key
     /*!

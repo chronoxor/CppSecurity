@@ -76,7 +76,7 @@ Cipher::Cipher(CipherAlgorithm algorithm, size_t iterations)
         throwex CppCommon::SecurityException("Invalid cipher decrypt context!");
 }
 
-std::string Cipher::GenerateSalt() const
+std::string Cipher::GenerateSalt()
 {
     std::string result(8, 0);
     CppCommon::Memory::CryptoFill(result.data(), result.size());

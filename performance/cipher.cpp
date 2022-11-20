@@ -10,13 +10,13 @@ using namespace CppSecurity;
 
 BENCHMARK("Cipher encrypt")
 {
-    static Cipher cipher("passw0rd", cipher.GenerateSalt());
+    static Cipher cipher("passw0rd", Cipher::GenerateSalt());
     std::string encrypted = cipher.Encrypt("test");
 }
 
 BENCHMARK("Cipher decrypt")
 {
-    static Cipher cipher("passw0rd", cipher.GenerateSalt());
+    static Cipher cipher("passw0rd", Cipher::GenerateSalt());
     static std::string encrypted = cipher.Encrypt("test");
     std::string decrypted = cipher.Decrypt(encrypted);
 }

@@ -10,7 +10,7 @@ using namespace CppSecurity;
 
 void TestCipher(CipherAlgorithm algorithm, size_t iterations)
 {
-    Cipher cipher("passw0rd", cipher.GenerateSalt(), algorithm, iterations);
+    Cipher cipher("passw0rd", Cipher::GenerateSalt(), algorithm, iterations);
 
     // Encrypt string
     std::string encrypted = cipher.Encrypt("test");

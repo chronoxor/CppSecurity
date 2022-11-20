@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['clear_123',['clear',['../classstd_1_1password.html#ae5c5b17f686c3148ad130384dfcf9781',1,'std::password']]]
+  ['cipher_143',['Cipher',['../class_cpp_security_1_1_cipher.html#af81938b8d4ab2274df06794f1f08bdd2',1,'CppSecurity::Cipher::Cipher(CipherAlgorithm algorithm=CipherAlgorithm::AES256, size_t iterations=1000)'],['../class_cpp_security_1_1_cipher.html#a9b858f8799725fad28d5e654bce4f813',1,'CppSecurity::Cipher::Cipher(std::string_view secret, CipherAlgorithm algorithm=CipherAlgorithm::AES256, size_t iterations=1000)'],['../class_cpp_security_1_1_cipher.html#aa00ff22a321fc419627859fec2641e97',1,'CppSecurity::Cipher::Cipher(std::string_view secret, std::string_view salt, CipherAlgorithm algorithm=CipherAlgorithm::AES256, size_t iterations=1000)'],['../class_cpp_security_1_1_cipher.html#ade19423fbbd617928d1082c01b0ed250',1,'CppSecurity::Cipher::Cipher(const Cipher &amp;)=default'],['../class_cpp_security_1_1_cipher.html#a6fe35055d87d59cbcb359a16c90bd046',1,'CppSecurity::Cipher::Cipher(Cipher &amp;&amp;)=default']]],
+  ['clear_144',['clear',['../classstd_1_1password.html#ae5c5b17f686c3148ad130384dfcf9781',1,'std::password']]]
 ];

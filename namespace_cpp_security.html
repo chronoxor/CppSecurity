@@ -87,6 +87,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpp_security_1_1_bcrypt_password_hashing.html">BcryptPasswordHashing</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">'bcrypt' password hashing algorithm  <a href="class_cpp_security_1_1_bcrypt_password_hashing.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpp_security_1_1_cipher.html">Cipher</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_cpp_security_1_1_cipher.html" title="Cipher.">Cipher</a>.  <a href="class_cpp_security_1_1_cipher.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpp_security_1_1_google_authenticator.html">GoogleAuthenticator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Google Authenticator.  <a href="class_cpp_security_1_1_google_authenticator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +111,22 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
+<tr class="memitem:ac0d0259a5476541dab784eaa36612982"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982">CipherAlgorithm</a> { <br />
+&#160;&#160;<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a9d055d97cf56a780d67859f9d15f930a">CipherAlgorithm::AES128</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a9a4b11c3504b8e2f8af860d671374240">CipherAlgorithm::AES192</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a91a6b83597d72bb96fe15edf9688bc2d">CipherAlgorithm::AES256</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a2413af2b837d973d5bcc800a38ba60da">CipherAlgorithm::ARIA128</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a9e3ccb250b5083d38259871e6fe56bf1">CipherAlgorithm::ARIA192</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982ae06569231f2a40975b34d3bae3210d39">CipherAlgorithm::ARIA256</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a4a9b0a91e76b79f8215029ba3caacf39">CipherAlgorithm::Camellia128</a>, 
+<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a2d760f60f11252f0e534ea9afbdddfae">CipherAlgorithm::Camellia192</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982a5572ee6e619e6ed3ad23df87a4da20ee">CipherAlgorithm::Camellia256</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ac0d0259a5476541dab784eaa36612982"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cipher algorithm.  <a href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982">More...</a><br /></td></tr>
+<tr class="separator:ac0d0259a5476541dab784eaa36612982"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4bec50eb73ce16dfb4ad4948c74af3e"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_cpp_security.html#ac4bec50eb73ce16dfb4ad4948c74af3e">PasswordFlags</a> { <br />
 &#160;&#160;<a class="el" href="namespace_cpp_security.html#ac4bec50eb73ce16dfb4ad4948c74af3ea334c4a4c42fdb79d7ebc3e73b517e6f8">PasswordFlags::none</a> = 0x0, 
 <a class="el" href="namespace_cpp_security.html#ac4bec50eb73ce16dfb4ad4948c74af3ea81e073b428b50247daba38531dcf412a">PasswordFlags::lower</a> = 0x1, 
@@ -135,11 +154,48 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a6258bd1424e1c7df4a04dd3bea55acea"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_cpp_security.html#a6258bd1424e1c7df4a04dd3bea55acea">version</a> [] = &quot;1.0.2.0&quot;</td></tr>
+<tr class="memitem:a6258bd1424e1c7df4a04dd3bea55acea"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_cpp_security.html#a6258bd1424e1c7df4a04dd3bea55acea">version</a> [] = &quot;1.1.0.0&quot;</td></tr>
 <tr class="memdesc:a6258bd1424e1c7df4a04dd3bea55acea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Project version.  <a href="namespace_cpp_security.html#a6258bd1424e1c7df4a04dd3bea55acea">More...</a><br /></td></tr>
 <tr class="separator:a6258bd1424e1c7df4a04dd3bea55acea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="ac0d0259a5476541dab784eaa36612982"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d0259a5476541dab784eaa36612982">&#9670;&nbsp;</a></span>CipherAlgorithm</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="namespace_cpp_security.html#ac0d0259a5476541dab784eaa36612982">CppSecurity::CipherAlgorithm</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_cpp_security_1_1_cipher.html" title="Cipher.">Cipher</a> algorithm. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a9d055d97cf56a780d67859f9d15f930a"></a>AES128&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a9a4b11c3504b8e2f8af860d671374240"></a>AES192&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a91a6b83597d72bb96fe15edf9688bc2d"></a>AES256&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a2413af2b837d973d5bcc800a38ba60da"></a>ARIA128&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a9e3ccb250b5083d38259871e6fe56bf1"></a>ARIA192&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982ae06569231f2a40975b34d3bae3210d39"></a>ARIA256&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a4a9b0a91e76b79f8215029ba3caacf39"></a>Camellia128&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a2d760f60f11252f0e534ea9afbdddfae"></a>Camellia192&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ac0d0259a5476541dab784eaa36612982a5572ee6e619e6ed3ad23df87a4da20ee"></a>Camellia256&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="cipher_8h_source.html#l00021">21</a> of file <a class="el" href="cipher_8h_source.html">cipher.h</a>.</p>
+
+</div>
+</div>
 <a id="ac4bec50eb73ce16dfb4ad4948c74af3e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4bec50eb73ce16dfb4ad4948c74af3e">&#9670;&nbsp;</a></span>PasswordFlags</h2>
 
@@ -263,7 +319,7 @@ template&lt;class TOutputStream &gt; </div>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char CppSecurity::version[] = &quot;1.0.2.0&quot;</td>
+          <td class="memname">const char CppSecurity::version[] = &quot;1.1.0.0&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">

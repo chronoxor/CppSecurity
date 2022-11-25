@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     CppSecurity::ScryptPasswordHashing scrypt;
 
     // Show the password
-    std::password password = "passw0rd";
+    std::password password = (argc > 1) ? argv[1] : "passw0rd";
     std::cout << "Password: " << password << std::endl;
 
     // Generate the digest

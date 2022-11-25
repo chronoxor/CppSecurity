@@ -17,11 +17,15 @@ int main(int argc, char** argv)
     CppSecurity::Cipher cipher;
 
     // Show the password
-    std::password password = "passw0rd";
+    std::password password = (argc > 1) ? argv[1] : "passw0rd";
     std::cout << "Password: " << password << std::endl;
 
+    // Show the salt
+    std::string salt = (argc > 2) ? argv[2] : "12345678";
+    std::cout << "Salt: " << salt << std::endl;
+
     // Initialize the cipher with a password and salt
-    cipher.Initialize(password, "12345678");
+    cipher.Initialize(password, salt);
     std::cout << "Cipher name: " << cipher.name() << std::endl;
     std::cout << "Cipher iterations: " << cipher.iterations() << std::endl;
 

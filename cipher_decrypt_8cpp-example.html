@@ -80,11 +80,15 @@ $(function() {
 <div class="line">    <a name="_a0"></a><a class="code" href="class_cpp_security_1_1_cipher.html">CppSecurity::Cipher</a> cipher;</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment">// Show the password</span></div>
-<div class="line">    <a name="_a1"></a><a class="code" href="classstd_1_1password.html">std::password</a> password = <span class="stringliteral">&quot;passw0rd&quot;</span>;</div>
+<div class="line">    <a name="_a1"></a><a class="code" href="classstd_1_1password.html">std::password</a> password = (argc &gt; 1) ? argv[1] : <span class="stringliteral">&quot;passw0rd&quot;</span>;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Password: &quot;</span> &lt;&lt; password &lt;&lt; std::endl;</div>
 <div class="line"> </div>
+<div class="line">    <span class="comment">// Show the salt</span></div>
+<div class="line">    std::string salt = (argc &gt; 2) ? argv[2] : <span class="stringliteral">&quot;12345678&quot;</span>;</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Salt: &quot;</span> &lt;&lt; salt &lt;&lt; std::endl;</div>
+<div class="line"> </div>
 <div class="line">    <span class="comment">// Initialize the cipher with a password and salt</span></div>
-<div class="line">    cipher.<a name="a2"></a><a class="code" href="class_cpp_security_1_1_cipher.html#a22a36c5064e90cdb6bcb06b726b2248f">Initialize</a>(password, <span class="stringliteral">&quot;12345678&quot;</span>);</div>
+<div class="line">    cipher.<a name="a2"></a><a class="code" href="class_cpp_security_1_1_cipher.html#a22a36c5064e90cdb6bcb06b726b2248f">Initialize</a>(password, salt);</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Cipher name: &quot;</span> &lt;&lt; cipher.<a name="a3"></a><a class="code" href="class_cpp_security_1_1_cipher.html#a7959758c0c1b5828cad02341a9a4bb4c">name</a>() &lt;&lt; std::endl;</div>
 <div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Cipher iterations: &quot;</span> &lt;&lt; cipher.<a name="a4"></a><a class="code" href="class_cpp_security_1_1_cipher.html#a90dc1b7e92326161bc314d1be428eca4">iterations</a>() &lt;&lt; std::endl;</div>
 <div class="line"> </div>

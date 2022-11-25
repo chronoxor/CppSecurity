@@ -38,7 +38,7 @@ int main(int argc, char** argv)
         if (line.empty() || (line == "0"))
             break;
 
-        std::string decoded = CppCommon::Encoding::Base32Decode(line);
+        std::string decoded = CppCommon::Encoding::Base64Decode(line);
         std::string decrypted = cipher.Decrypt(decoded);
 
         // Show the decrypted string

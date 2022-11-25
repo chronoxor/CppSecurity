@@ -39,7 +39,7 @@ int main(int argc, char** argv)
             break;
 
         std::string encrypted = cipher.Encrypt(line);
-        std::string encoded = CppCommon::Encoding::Base32Encode(encrypted);
+        std::string encoded = CppCommon::Encoding::Base64Encode(encrypted);
 
         // Show the encoded string
         std::cout << encoded << std::endl;

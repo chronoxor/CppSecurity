@@ -101,7 +101,7 @@ $(function() {
 <div class="line">        <span class="keywordflow">if</span> (line.empty() || (line == <span class="stringliteral">&quot;0&quot;</span>))</div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">        std::string decoded = CppCommon::Encoding::Base32Decode(line);</div>
+<div class="line">        std::string decoded = CppCommon::Encoding::Base64Decode(line);</div>
 <div class="line">        std::string decrypted = cipher.<a name="a5"></a><a class="code" href="class_cpp_security_1_1_cipher.html#a954357d87c13060ca93b64de7fc552ea">Decrypt</a>(decoded);</div>
 <div class="line"> </div>
 <div class="line">        <span class="comment">// Show the decrypted string</span></div>

@@ -1,8 +1,10 @@
 # CppSecurity
 
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/github/release/chronoxor/CppSecurity.svg?sort=semver)](https://github.com/chronoxor/CppSecurity/releases)
+<br/>
 [![Linux (clang)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-clang.yml/badge.svg)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-clang.yml)
 [![Linux (gcc)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-gcc.yml/badge.svg)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-linux-gcc.yml)
-<br/>
 [![MacOS](https://github.com/chronoxor/CppSecurity/actions/workflows/build-macos.yml/badge.svg)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-macos.yml)
 <br/>
 [![Windows (Cygwin)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-cygwin.yml/badge.svg)](https://github.com/chronoxor/CppSecurity/actions/workflows/build-windows-cygwin.yml)
@@ -43,6 +45,7 @@ generation, password hashing algorithms and Google Authenticator.
 * [gcc](https://gcc.gnu.org)
 * [git](https://git-scm.com)
 * [gil](https://github.com/chronoxor/gil.git)
+* [OpenSSL](https://www.openssl.org)
 * [python3](https://www.python.org)
 
 Optional:

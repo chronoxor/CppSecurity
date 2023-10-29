@@ -1,5 +1,6 @@
 # CppSecurity
 
+
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Release](https://img.shields.io/github/release/chronoxor/CppSecurity.svg?sort=semver)](https://github.com/chronoxor/CppSecurity/releases)
 <br/>

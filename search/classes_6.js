@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scryptpasswordhashing_119',['ScryptPasswordHashing',['../class_cpp_security_1_1_scrypt_password_hashing.html',1,'CppSecurity']]]
+  ['scryptpasswordhashing_0',['ScryptPasswordHashing',['../class_cpp_security_1_1_scrypt_password_hashing.html',1,'CppSecurity']]]
 ];

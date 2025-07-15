@@ -22,7 +22,7 @@ enum class PasswordFlags
     lower = 0x1,        //!< Password must contain alphabet characters in lower case (a-z)
     upper = 0x2,        //!< Password must contain alphabet characters in upper case (A-Z)
     digits = 0x4,       //!< Password must contain digits (0-9)
-    symbols = 0x8,      //!< Password must contain punctuation symbols (!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~)
+    symbols = 0x8,      //!< Password must contain punctuation symbols (!"#%&'()*+,-./:;<=>?@[\]^_`{|}~)
 };
 
 //! Stream output: Password flags

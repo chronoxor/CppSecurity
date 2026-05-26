@@ -21,6 +21,7 @@ endif()
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 # Compiler features
+include(CodeCoverage)
 include(SetCompilerFeatures)
 include(SetCompilerWarnings)
 include(SetPlatformFeatures)
@@ -119,7 +120,7 @@ if(NOT CPPSECURITY_MODULE)
   list(APPEND INSTALL_TARGETS_PDB cppsecurity-tests)
 
   # CTest
-  enable_testing()
+  include(CTest)
   add_test(cppsecurity-tests cppsecurity-tests --durations yes --order lex)
 
   # Install

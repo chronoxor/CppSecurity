@@ -18,6 +18,8 @@ if(NOT TARGET libscrypt)
     # C4244: 'conversion' conversion from 'type1' to 'type2', possible loss of data
     # C4245: 'conversion' : conversion from 'type1' to 'type2', signed/unsigned mismatch
     set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS} /wd4013 /wd4131 /wd4244 /wd4245")
+  elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS} -Wno-discarded-qualifiers")
   else()
     set_target_properties(libscrypt PROPERTIES COMPILE_FLAGS "${PEDANTIC_COMPILE_FLAGS}")
   endif()
